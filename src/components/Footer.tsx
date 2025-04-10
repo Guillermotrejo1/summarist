@@ -4,9 +4,9 @@ const Footer = () => {
     <section id="footer">
       <div className="container">
         <div className="row">
-          <div className="footer__top--wrapper">
-            <div className="footer__block">
-              <div className="footer__link--title">Actions</div>
+          <div className="relative flex justify-between text-sm">
+            <div className="z-1">
+              <div className="font-semibold mb">Actions</div>
               <div>
                 <div className="footer__link--wrapper">
                   <a className="footer__link">Summarist Magazine</a>
@@ -23,7 +23,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer__block">
-              <div className="footer__link--title">Useful Links</div>
+              <div className="font-semibold mb">Useful Links</div>
               <div>
                 <div className="footer__link--wrapper">
                   <a className="footer__link">Pricing</a>
@@ -40,42 +40,42 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer__block">
-              <div className="footer__link--title">Company</div>
+              <div className="font-semibold mb-4 text-lg text-[#032b41] ">Company</div>
               <div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">About</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">About</a>
                 </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Careers</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">Careers</a>
                 </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Partners</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">Partners</a>
                 </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Code of Conduct</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">Code of Conduct</a>
                 </div>
               </div>
             </div>
-            <div className="footer__block">
-              <div className="footer__link--title">Other</div>
+            <div className="z-1">
+              <div className="font-semibold mb">Other</div>
               <div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Sitemap</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">Sitemap</a>
                 </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Legal Notice</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">Legal Notice</a>
                 </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Terms of Service</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">Terms of Service</a>
                 </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Privacy Policies</a>
+                <div className="flex items-center gap-4 mb-4">
+                  <a className="flex">Privacy Policies</a>
                 </div>
               </div>
             </div>
           </div>
-          <div className="footer__copyright--wrapper">
-            <div className="footer__copyright">
+          <div className="flex justify-center items-center">
+            <div className="text-[#032b41] font-medium">
               Copyright &copy; 2023 Summarist.
             </div>
           </div>
