@@ -52,12 +52,57 @@ ul {
   justify-content: center;
   min-width: 180px;
 }
+.btn-guest {
+  background-color: #3a579d;
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 200ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+.btn-google {
+  background-color: #4285f4;
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 200ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
 
 button {
   cursor: pointer;
   outline: none;
   border: none;
   background-color: transparent;
+}
+
+.or-text:before, .or-text:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 145px; /* adjust the width as needed */
+  height: 1px;
+  background-color: #bac8ce;
+}
+
+.or-text:before {
+  right: 100%;
+  margin-right: 16px;
+}
+
+.or-text:after {
+  left: 100%;
+  margin-left: 16px;
 }
 
 .container {

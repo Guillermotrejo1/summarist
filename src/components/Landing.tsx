@@ -1,7 +1,19 @@
 import Image from "next/image";
 import landing from "@/assets/landing.png";
+import LoginModal from "./LoginModal";
+import { useState } from "react";
 
 const Landing = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const handleCloseModal = () =>  {
+    setIsModalOpen(false);
+  }
+
   return (
     <section id="landing">
       <div className="container">
@@ -19,7 +31,10 @@ const Landing = () => {
                 <br className="remove--tablet" />
                 and even people who don’t like to read.
               </div>
-              <button className="btn max-w-[300px] flex items-center">Login</button>
+              <button className="btn max-w-[300px] flex items-center" onClick={handleOpenModal}>
+                Login
+              </button>
+              {isModalOpen && <LoginModal onClose={handleCloseModal}/>}
             </div>
             <figure className="w-full h-full max-w-[400px]">
               <Image
