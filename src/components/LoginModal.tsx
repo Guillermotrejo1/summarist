@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { BsX } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { IoPerson } from "react-icons/io5";
@@ -7,6 +9,16 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleGuestLogin = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      router.push("/forYou");
+    }, 1000);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black/40 z-50 flex justify-center items-center">
       <div className="relative w-[400px] h-[500px] bg-white rounded-lg p-8">
@@ -15,9 +27,21 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
         </p>
         <div className="flex flex-col justify-center items-center">
           <div className="w-full justify-end">
-            <button className="flex btn-guest items-center justify-center w-full mb-4 relative">
-              <IoPerson className="absolute left-2 text-2xl" />
-              <span>Login as a Guest</span>
+            <button
+              className="flex btn-guest items-center justify-center w-full mb-4 relative"
+              onClick={handleGuestLogin}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <div className="flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#fff]"></div>
+                </div>
+              ) : (
+                <>
+                  <IoPerson className="absolute left-2 text-2xl" />
+                  <span>Login as a Guest</span>
+                </>
+              )}
             </button>
           </div>
           <div className="mb-4 flex justify-center items-center">
