@@ -79,6 +79,12 @@ ul {
   min-width: 180px;
 }
 
+.wrapper{
+  margin-left: 0;
+  background-color: #2bd97c;
+  width: 100%;
+}
+
 button {
   cursor: pointer;
   outline: none;

@@ -1,7 +1,11 @@
+import Sidebar from '@/components/Sidebar'
+import React from 'react'
 
 const forYou = () => {
   return (
-    <div>for you page</div>
+    <div>
+      <Sidebar/>
+    </div>
   )
 }
 
