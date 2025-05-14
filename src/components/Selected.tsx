@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Login from "../assets/login.png";
+import Lean from "../assets/the-lean-startup.png";
 import { FaCirclePlay } from "react-icons/fa6";
 
 const Selected = () => {
@@ -14,13 +14,13 @@ const Selected = () => {
       >
         <div>
           <div className="flex w-[calc(66.66%)]">
-            <h2 className="text-sm h-[2.5rem] overflow-hidden">
+            <h2 className="leading-5">
               How Constant Innovation Creates Radically Successful Businesses
             </h2>
             <div className="w-[1px] bg-[#bac8ce] mx-4 h-38"></div>
             <div>
               <div className="flex">
-                <Image src={Login} width={200} height={200} alt="" />
+                <Image src={Lean} width={150} height={150} alt="" />
                 <div className="flex flex-col ml-4">
                   <h1 className="font-bold whitespace-nowrap">The Lean Startup</h1>
                   <h2>Eric Ries</h2>
