@@ -40,7 +40,7 @@ const Suggested = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/5 p-1">
+        <div className="w-1/5 ml-2 p-2">
           <Image src={Rich} width={170} height={100} alt="" />
           <h2 className="font-bold text-[#032b41] mb-2">
             Rich Dad, Poor Dad
@@ -48,7 +48,7 @@ const Suggested = () => {
           <h3 className="text-sm text-[#6b757b] font-light mb-2">
             Robert T. Kyyosaki
           </h3>
-          <h4 className="text-sm text-[#394547] mb-2">
+          <h4 className="text-sm text-[#394547] mb-4">
             What the Rich Teach Their Kids about Money - That the Poor and the Middle Class Do Not!
           </h4>
           <div className="flex">
@@ -62,7 +62,7 @@ const Suggested = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/5 p-1">
+        <div className="w-1/5 ml-2 p-2">
           <Image src={Rule} width={170} height={100} alt="" />
           <h2 className="font-bold text-[#032b41] mb-2">
             The 10X Rule
@@ -84,7 +84,7 @@ const Suggested = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/5 p-1">
+        <div className="w-1/5 ml-2 p-2">
           <Image src={Work} width={170} height={100} alt="" />
           <h2 className="font-bold text-[#032b41] mb-2">
             Deep Work
@@ -106,7 +106,7 @@ const Suggested = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/5 p-1">
+        <div className="w-1/5 ml-2 p-2">
           <Image src={Five} width={170} height={100} alt="" />
           <h2 className="font-bold text-[#032b41] mb-2">
             The 5 Second Rule
