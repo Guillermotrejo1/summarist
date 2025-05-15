@@ -1,8 +1,44 @@
 import Image from "next/image";
-import Lean from "../assets/the-lean-startup.png";
 import { FaCirclePlay } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+interface Book {
+  id: string;
+  author: string;
+  title: string;
+  subTitle: string;
+  imageLink: string;
+  audioLink: string;
+  totalRating: number;
+  averageRating: number;
+  keyIdeas: number;
+  type: string;
+  status: string;
+  subscriptionRequired: boolean;
+  summary: string;
+  tags: string[];
+  bookDescription: string;
+  authorDescription: string;
+}
 
 const Selected = () => {
+  const [books, setBooks] = useState<Book | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected"
+        );
+        setBooks(response.data[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <h1 className="text-[22px] font-bold text-[#032b41] mb-4">
@@ -19,17 +55,28 @@ const Selected = () => {
             </h2>
             <div className="w-[1px] bg-[#bac8ce] mx-4 h-38"></div>
             <div>
-              <div className="flex">
-                <Image src={Lean} width={150} height={150} alt="" />
-                <div className="flex flex-col ml-4">
-                  <h1 className="font-bold whitespace-nowrap">The Lean Startup</h1>
-                  <h2>Eric Ries</h2>
-                  <div className="flex mt-6">
-                    <FaCirclePlay className="text-4xl"/>
-                    <h3 className="flex ml-3 font-bold text-[14px] text-[#032b41] whitespace-nowrap items-center">3 mins 23 secs</h3>
+              {books && (
+                <div className="flex">
+                  <Image
+                    src={books.imageLink}
+                    width={150}
+                    height={150}
+                    alt=""
+                  />
+                  <div className="flex flex-col ml-4">
+                    <h1 className="font-bold whitespace-nowrap">
+                      {books.title}
+                    </h1>
+                    <h2>{books.author}</h2>
+                    <div className="flex mt-6">
+                      <FaCirclePlay className="text-4xl" />
+                      <h3 className="flex ml-3 font-bold text-[14px] text-[#032b41] whitespace-nowrap items-center">
+                        3 mins 23 secs
+                      </h3>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -39,14 +86,3 @@ const Selected = () => {
 };
 
 export default Selected;
-
-// width: 100%;
-//     height: 100%;
-//     background-color: #000;
-//     color: #fff;
-//     display: flex
-// ;
-//     justify-content: center;
-//     border-radius: 50%;
-//     align-items: center;
-//     padding: 4px 4px 4px 6px;

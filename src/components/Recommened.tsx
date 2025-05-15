@@ -29,11 +29,7 @@ const Recommended = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://us-central1-summaristt.cloudfunctions.net/getBooks", {
-          params: {
-            status: "recommended"
-          }
-        });
+        const response = await axios.get("https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended");
         setBooks(response.data.slice(0, 5));
       } catch (error) {
         console.error("Error fetching data:", error);
