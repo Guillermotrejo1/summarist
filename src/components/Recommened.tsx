@@ -3,16 +3,17 @@ import win from "../assets/how-to-win-friends-and-influence-people.png";
 import hurt from "../assets/cant-hurt-me.png";
 import atomic from "../assets/atomic_habits.png";
 import mastery from "../assets/mastery.png";
-import talk from "../assets/how-to-talk-to-anyone.png"
-
+import talk from "../assets/how-to-talk-to-anyone.png";
 import { CiClock2 } from "react-icons/ci";
 import { IoMdStarOutline } from "react-icons/io";
 
+
 const Recommened = () => {
+  
   return (
     <div className="">
       <h1 className="text-[22px] font-bold text-[#032b41] mb-4">
-        Recommened For You
+      Recommended For You
       </h1>
       <h4 className="font-light text-[#394547] mb-4">
         We Think you&apos;ll like this
@@ -42,9 +43,7 @@ const Recommened = () => {
         </div>
         <div className="w-1/5 p-1">
           <Image src={hurt} width={170} height={100} alt="" />
-          <h2 className="font-bold text-[#032b41] mb-2">
-            Can&apos;t Hurt Me
-          </h2>
+          <h2 className="font-bold text-[#032b41] mb-2">Can&apos;t Hurt Me</h2>
           <h3 className="text-sm text-[#6b757b] font-light mb-2">
             David Goggins
           </h3>
@@ -64,9 +63,7 @@ const Recommened = () => {
         </div>
         <div className="w-1/5 p-1">
           <Image src={mastery} width={170} height={100} alt="" />
-          <h2 className="font-bold text-[#032b41] mb-2">
-            Mastery
-          </h2>
+          <h2 className="font-bold text-[#032b41] mb-2">Mastery</h2>
           <h3 className="text-sm text-[#6b757b] font-light mb-2">
             Robert Greene
           </h3>
@@ -86,9 +83,7 @@ const Recommened = () => {
         </div>
         <div className="w-1/5 p-1">
           <Image src={atomic} width={170} height={100} alt="" />
-          <h2 className="font-bold text-[#032b41] mb-2">
-            Atomic Habits
-          </h2>
+          <h2 className="font-bold text-[#032b41] mb-2">Atomic Habits</h2>
           <h3 className="text-sm text-[#6b757b] font-light mb-2">
             James Clear
           </h3>
@@ -108,9 +103,7 @@ const Recommened = () => {
         </div>
         <div className="w-1/5 p-1">
           <Image src={talk} width={170} height={100} alt="" />
-          <h2 className="font-bold text-[#032b41] mb-2">
-            Atomic Habits
-          </h2>
+          <h2 className="font-bold text-[#032b41] mb-2">Atomic Habits</h2>
           <h3 className="text-sm text-[#6b757b] font-light mb-2">
             James Clear
           </h3>
@@ -134,6 +127,4 @@ const Recommened = () => {
 };
 
 export default Recommened;
-// font-size: 14px;
-// font-weight: 300;
-// color: #6b757b;
+
