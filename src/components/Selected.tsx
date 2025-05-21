@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FaCirclePlay } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 interface Book {
   id: string;
@@ -44,14 +45,13 @@ const Selected = () => {
       <h1 className="text-[22px] font-bold text-[#032b41] mb-4">
         Selected just for you
       </h1>
-      <a
-        href=""
+      <Link href={`book/${books?.id}`}
         className="flex bg-[#fbefd6] p-6 mb-6 rounded-[6px] gap-6 w-[calc(66.66%)] h-50"
       >
         <div>
           <div className="flex w-[calc(66.66%)]">
             <h2 className="leading-5">
-              How Constant Innovation Creates Radically Successful Businesses
+              {books?.subTitle}
             </h2>
             <div className="w-[1px] bg-[#bac8ce] mx-4 h-38"></div>
             <div>
@@ -80,7 +80,7 @@ const Selected = () => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

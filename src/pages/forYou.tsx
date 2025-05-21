@@ -4,7 +4,6 @@ import Selected from "@/components/Selected";
 import Sidebar from "@/components/Sidebar";
 import Suggested from "@/components/Suggested";
 import React from "react";
-import axios from "axios";
 
 
 const forYou = () => {
@@ -23,14 +22,6 @@ const forYou = () => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const { data } = await axios.get("https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended");
-  return {
-    props: {
-      recommendedBooks: data,
-    },
-  };
-};
 
 
 export default forYou;

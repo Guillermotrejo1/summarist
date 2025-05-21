@@ -2,7 +2,6 @@ import SearchBar from "@/components/SearchBar";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import Win from "../../assets/how-to-win-friends-and-influence-people.png";
 import { IoIosStarOutline } from "react-icons/io";
 import { SlMicrophone } from "react-icons/sl";
 import { GoClock } from "react-icons/go";
@@ -91,7 +90,7 @@ const Id = () => {
                     </div>
                     <div className="w-1/2 flex text-sm items-center font-medium">
                       <HiOutlineLightBulb className="text-lg" />{" "}
-                      <span className="ml-2 text-sm">{bookInfo.keyIdeas}</span>
+                      <span className="ml-2 text-sm">{bookInfo.keyIdeas} Key ideas</span>
                     </div>
                   </div>
                 </div>
