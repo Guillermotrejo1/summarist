@@ -11,7 +11,9 @@ import { MdLogout } from "react-icons/md";
 
 const Sidebar = () => {
   return (
-    <div className="bg-[#f7faf9] w-50 min-w-50 fixed top-0 left-0 h-screen z-50 transition duration-300 ease-in-out">
+    <div
+      className={`bg-[#f7faf9] w-50 min-w-50 fixed top-0 left-0 z-50 transition duration-300 ease-in-out`}
+    >
       <div>
         <Image
           src={Logo}

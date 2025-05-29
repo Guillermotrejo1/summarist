@@ -10,6 +10,7 @@ import {} from "react-icons/ai";
 import { BsBook, BsBookmark } from "react-icons/bs";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 interface Book {
   id: string;
@@ -95,10 +96,12 @@ const Id = () => {
                   </div>
                 </div>
                 <div className="flex gap-2 mb-4">
+                  <Link href={`player/${bookInfo?.id}`}>
                   <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
                     <BsBook />
                     <span>Read</span>
                   </button>
+                  </Link>
                   <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
                     <SlMicrophone />
                     <span>Listen</span>
