@@ -1,9 +1,26 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
 * {
-  margin: 0 auto;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
@@ -62,7 +79,7 @@ ul {
   min-width: 180px;
 }
 
-.wrapper {
+.wrapper{
   margin-left: 0;
   background-color: #2bd97c;
   width: 100%;
@@ -75,9 +92,8 @@ button {
   background-color: transparent;
 }
 
-.or-text:before,
-.or-text:after {
-  content: "";
+.or-text:before, .or-text:after {
+  content: '';
   position: absolute;
   top: 50%;
   width: 145px; /* adjust the width as needed */
