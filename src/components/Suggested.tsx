@@ -43,12 +43,12 @@ const Suggested = () => {
   }, []);
 
   return (
-    <div className="py-16">
+    <div className="py-16 flex flex-col">
       <h1 className="text-[22px] font-bold text-[#032b41] mb-2">
         Suggested Books
       </h1>
       <h4 className="font-light text-[#394547] mb-4">Browse those books</h4>
-      <div className="flex">
+      <div className="flex justify-center flex-wrap">
         {books.map((book) => (
           <Link
             key={book.id}

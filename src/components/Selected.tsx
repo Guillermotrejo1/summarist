@@ -41,7 +41,7 @@ const Selected = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <h1 className="text-[22px] font-bold text-[#032b41] mb-4">
         Selected just for you
       </h1>

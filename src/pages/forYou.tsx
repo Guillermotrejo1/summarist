@@ -8,10 +8,10 @@ import React from "react";
 
 const forYou = () => {
   return (
-    <div>
+    <div className="flex bg-amber-500 flex-col items-center justify-center">
       <Sidebar />
       <SearchBar />
-      <div className="py-10 w-[calc(100%-200px)] ml-50 h-screen">
+      <div className="flex items-center justify-center py-10 w-[calc(100%-400px)]">
         <div className="max-w-[1070px] w-full m-auto px-6">
           <Selected />
           <Recommened />
