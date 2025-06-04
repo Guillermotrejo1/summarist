@@ -8,8 +8,16 @@ import { IoIosSearch } from "react-icons/io";
 import { SlSettings } from "react-icons/sl";
 import { IoMdHelpCircleOutline } from "react-icons/io";
 import { MdLogout } from "react-icons/md";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
+
+ const router = useRouter();
+  
+   
+  const isPlayerRoute = router.pathname.startsWith('/player');
+
+
   return (
     <div
       className={`bg-[#f7faf9] w-50 min-w-50 fixed h-screen top-0 left-0 z-50 transition duration-300 ease-in-out`}
@@ -23,7 +31,7 @@ const Sidebar = () => {
           alt=""
         />
       </div>
-      <div className="flex flex-col justify-between h-[calc(100vh-60px)] pb-5 overflow-y-auto">
+      <div className={`flex flex-col justify-between ${ isPlayerRoute ? `h-[calc(95vh-60px)]`: 'h-[calc(100vh-60px)]'} pb-5 overflow-y-auto`}>
         <div className="flex-auto mt-10">
           <div className="flex flex-col h-14 text-[#032b41] m-4 cursor-pointer">
             <Link href="/forYou" className="flex mb-10">

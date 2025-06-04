@@ -7,6 +7,7 @@ import React from "react";
 
 
 const forYou = () => {
+  
   return (
     <div className="flex flex-col items-center justify-center">
       <Sidebar />
