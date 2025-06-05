@@ -1,7 +1,9 @@
 
 const ProgressBar = () => {
   return (
-    <div>ProgressBar</div>
+    <div className="ml-32">
+      <input type="range" min="0" max="100" value="50" />
+    </div>
   )
 }
 
