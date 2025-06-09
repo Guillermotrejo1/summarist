@@ -80,7 +80,7 @@ export default function Controls() {
 
   return (
     <>
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-4 items-center ml-32">
         <button onClick={skipBackward}>
           <GrBackTen className="text-[28px]" />
         </button>
