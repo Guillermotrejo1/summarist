@@ -23,6 +23,8 @@ interface Book {
   authorDescription: string;
 }
 
+
+
 export const ProgressBar = () => {
   const [data, setData] = useState<Book>();
   const [currentTime, setCurrentTime] = useState(0);
@@ -31,6 +33,7 @@ export const ProgressBar = () => {
   const { id } = router.query;
   const progressBarRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,12 +61,10 @@ export const ProgressBar = () => {
 
   useEffect(() => {
     const audio = audioRef.current;
-
     if (!audio) return;
 
     const handleTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
-
       if (progressBarRef.current) {
         progressBarRef.current.value = audio.currentTime.toString();
       }
@@ -71,19 +72,16 @@ export const ProgressBar = () => {
 
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
-
       if (progressBarRef.current) {
         progressBarRef.current.max = audio.duration.toString();
       }
     };
 
     audio.addEventListener("timeupdate", handleTimeUpdate);
-
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
 
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
-
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
   }, [data]);
@@ -91,18 +89,14 @@ export const ProgressBar = () => {
   const handleProgressChange = () => {
     if (audioRef.current && progressBarRef.current) {
       const newTime = Number(progressBarRef.current.value);
-
       audioRef.current.currentTime = newTime;
-
       setCurrentTime(newTime);
     }
   };
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
-
     const seconds = Math.floor(time % 60);
-
     return `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`;
@@ -111,7 +105,6 @@ export const ProgressBar = () => {
   return (
     <div className="flex items-center justify-center ml-32 w-1/3">
       <span className="mr-2">{formatTime(currentTime)}</span>
-
       <input
         className="max-w-[80%] bg-gray-300"
         type="range"
@@ -121,9 +114,7 @@ export const ProgressBar = () => {
         max={duration}
         onChange={handleProgressChange}
       />
-
       <span className="ml-2">{formatTime(duration)}</span>
-
       <audio ref={audioRef} className="hidden" controls={false} />
     </div>
   );
