@@ -1,8 +1,8 @@
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
 import { useRouter } from "next/router";
-
 import { useEffect, useRef, useState } from "react";
+import { RootState } from "@/redux/store";
 
 interface Book {
   id: string;
@@ -23,8 +23,6 @@ interface Book {
   authorDescription: string;
 }
 
-
-
 export const ProgressBar = () => {
   const [data, setData] = useState<Book>();
   const [currentTime, setCurrentTime] = useState(0);
@@ -33,7 +31,8 @@ export const ProgressBar = () => {
   const { id } = router.query;
   const progressBarRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  
+  const dispatch = useDispatch();
+  const isPlaying = useSelector((state: RootState) => state.audio.isPlaying);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +83,7 @@ export const ProgressBar = () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
-  }, [data]);
+  }, [data, dispatch]);
 
   const handleProgressChange = () => {
     if (audioRef.current && progressBarRef.current) {
@@ -102,6 +101,26 @@ export const ProgressBar = () => {
       .padStart(2, "0")}`;
   };
 
+  const handleProgressClick = (event: React.MouseEvent) => {
+    const bar = progressBarRef.current;
+
+    if (!bar || !audioRef.current) return;
+
+    const rect = bar.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const barWidth = rect.width;
+
+    const fraction = clickX / barWidth;
+    const newTime = fraction * audioRef.current.duration;
+
+    audioRef.current.currentTime = newTime;
+    setCurrentTime(newTime);
+
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  };
+  
   return (
     <div className="flex items-center justify-center ml-32 w-1/3">
       <span className="mr-2">{formatTime(currentTime)}</span>
@@ -113,6 +132,7 @@ export const ProgressBar = () => {
         min="0"
         max={duration}
         onChange={handleProgressChange}
+        onClick={handleProgressClick}
       />
       <span className="ml-2">{formatTime(duration)}</span>
       <audio ref={audioRef} className="hidden" controls={false} />

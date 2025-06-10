@@ -124,6 +124,11 @@ button {
   padding: 0 24px;
 }
 
+.play-animation {
+  transform: scale(1.1); /* Example animation */
+  transition: transform 0.5s ease; /* Smooth transition */
+}
+
 #footer {
   background-color: rgb(241 246 244);
 }
