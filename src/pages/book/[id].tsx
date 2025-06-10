@@ -91,21 +91,25 @@ const Id = () => {
                     </div>
                     <div className="w-1/2 flex text-sm items-center font-medium">
                       <HiOutlineLightBulb className="text-lg" />{" "}
-                      <span className="ml-2 text-sm">{bookInfo.keyIdeas} Key ideas</span>
+                      <span className="ml-2 text-sm">
+                        {bookInfo.keyIdeas} Key ideas
+                      </span>
                     </div>
                   </div>
                 </div>
                 <div className="flex gap-2 mb-4">
-                  <Link href={`player/${bookInfo?.id}`}>
-                  <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
-                    <BsBook />
-                    <span>Read</span>
-                  </button>
+                  <Link href={`/player/${bookInfo?.id}`}>
+                    <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
+                      <BsBook />
+                      <span>Read</span>
+                    </button>
                   </Link>
-                  <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
-                    <SlMicrophone />
-                    <span>Listen</span>
-                  </button>
+                  <Link href={`/player/${bookInfo?.id}`}>
+                    <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
+                      <SlMicrophone />
+                      <span>Listen</span>
+                    </button>
+                  </Link>
                 </div>
                 <div className="flex items-center gap-2 mb-10">
                   <BsBookmark className="text-lg text-[#0365f2]" />
