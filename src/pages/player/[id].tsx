@@ -1,10 +1,9 @@
 import SearchBar from "@/components/SearchBar";
 import Sidebar from "@/components/Sidebar";
 import React, { useEffect, useState } from "react";
-import {} from "react-icons/ai";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { AudioPlayer } from "@/components/player/AudioPlayer";
+import AudioPlayer  from "@/components/player/AudioPlayer";
 
 interface Book {
   id: string;
@@ -26,7 +25,7 @@ interface Book {
 }
 
 const Id = () => {
-  const [bookInfo, setBookInfo] = useState<Book>();
+  const [bookInfo, setBookInfo] = useState<Book | undefined>(undefined);
   const params = useParams();
   const id = params?.id;
 
@@ -62,7 +61,15 @@ const Id = () => {
           <div className="whitespace-pre-line">{bookInfo?.summary}</div>
         </div>
       </div>
-      <AudioPlayer/>
+      {/* Pass all necessary bookInfo properties to AudioPlayer */}
+      {bookInfo && (
+        <AudioPlayer
+          audioLink={bookInfo.audioLink}
+          title={bookInfo.title}
+          author={bookInfo.author}
+          imageLink={bookInfo.imageLink} // Pass imageLink here
+        />
+      )}
     </>
   );
 };
