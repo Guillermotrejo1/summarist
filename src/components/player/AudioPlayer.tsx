@@ -22,9 +22,11 @@ const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) 
       audioRef.current.load(); // Load the new audio source
 
       const handleTimeUpdate = () => {
-        setCurrentTime(audioRef.current!.currentTime);
+        if (audioRef.current) {
+          setCurrentTime(audioRef.current.currentTime);
+        }
       };
-
+      
       const handleLoadedMetadata = () => {
         setDuration(audioRef.current!.duration);
       };
