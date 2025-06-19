@@ -133,6 +133,12 @@ button {
   background-color: rgb(241 246 244);
 }
 
+.footer__links {
+  color: #394547;
+  cursor: not-allowed;
+  font-size: 14px;
+}
+
 /* =========================
 Custom Input range 
 =============================*/

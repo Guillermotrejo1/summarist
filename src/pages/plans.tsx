@@ -186,33 +186,82 @@ const plans = () => {
               </div>
             </div>
             <section id="footer">
-              Footer
-              <div>
-                container
-                <div>
-                  row
-                  <div>
-                    footer_top--wrapper
-                    <div>
-                      footer_block
-                      <div>Actions</div>
+              <div className="py-10 w-full bg-[#f1f6f4]">
+                <div className="max-w-[1070px] w-full mx-auto px-6">
+                  <div className="relative flex justify-between text-sm mt-8 mx-auto mb-16">
+                    <div className="z-[1]">
+                      <div className="font-semibold mb-4 text-lg text-[#032b41]">
+                        Actions
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Summarist Magazine</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Cancel Subscription</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Help</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Contact us</a>
+                      </div>
                     </div>
-                    <div>
-                      footer_block
-                      <div>Useful Links</div>
+                    <div className="z-[1]">
+                      <div className="font-semibold mb-4 text-lg text-[#032b41]">
+                        Useful Links
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Pricing</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Summarist Business</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Gift Cards</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Authors & Publishers</a>
+                      </div>
                     </div>
-                    <div>
-                      footer_block
-                      <div>Company</div>
+                    <div className="z-[1]">
+                      <div className="font-semibold mb-4 text-lg text-[#032b41]">
+                        Company
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">About</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Careers</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Partners</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="footer__links" href="">Code of cunduct</a>
+                      </div>
                     </div>
-                    <div>
-                      footer_block
-                      <div>Other</div>
+                    <div className="z-[1]">
+                      <div className="font-semibold mb-4 text-lg text-[#032b41]">
+                        Other
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="text-[#394547]! text-sm cursor-not-allowed" href="">Sitemap</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="text-[#394547]! text-sm cursor-not-allowed" href="">Legal Notice</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="text-[#394547]! text-sm cursor-not-allowed" href="">Terms of Service</a>
+                      </div>
+                      <div className="mb-3 leading-none">
+                        <a className="text-[#394547]! text-sm cursor-not-allowed" href="">Privacy Policies</a>
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    copyright wrapper
-                    <div>Copyright @ 2023 Summarist.</div>
+                  <div className="flex justify-center items-center">
+                    <div className="text-[#032b41] font-medium">
+                      Copyright @ 2023 Summarist.
+                    </div>
                   </div>
                 </div>
               </div>
