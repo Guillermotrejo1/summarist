@@ -28,6 +28,7 @@
 body {
   max-width: 100%;
   overflow-x: hidden;
+  
 }
 
 a {
@@ -38,6 +39,7 @@ a {
 ul {
   list-style: none;
 }
+
 
 .btn {
   background-color: #2bd97c;
@@ -83,6 +85,11 @@ ul {
   margin-left: 0;
   background-color: #2bd97c;
   width: 100%;
+}
+
+.accordion__border {
+  box-shadow: none !important;
+  border-bottom: solid 1px #f1f6f4;
 }
 
 button {
