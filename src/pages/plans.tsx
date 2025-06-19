@@ -3,6 +3,12 @@ import PricingTop from "../assets/pricing-top.png";
 import { FaFileAlt } from "react-icons/fa";
 import { RiPlantFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa";
+import React from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const plans = () => {
   return (
@@ -62,9 +68,15 @@ const plans = () => {
               <div className="flex gap-6 p-6 text-[#f1f6f4] rounded-sm cursor-pointer border-[4px] border-solid border-[#bac8ce max-w-[680px] mx-auto">
                 <div className="relative w-6 h-6 rounded-full border-[2px] border-solid border-[#000] flex items-center justify-center"></div>
                 <div>
-                  <h3 className="text-lg text-[#032b41] font-semibold mb-2">Premium Plus Yearly</h3>
-                  <p className="text-2xl text-[#032b41] font-semibold mb-2">$99.99/year</p>
-                  <p className="text-sm text-[#6b757b]">7-day Free trial included</p>
+                  <h3 className="text-lg text-[#032b41] font-semibold mb-2">
+                    Premium Plus Yearly
+                  </h3>
+                  <p className="text-2xl text-[#032b41] font-semibold mb-2">
+                    $99.99/year
+                  </p>
+                  <p className="text-sm text-[#6b757b]">
+                    7-day Free trial included
+                  </p>
                 </div>
               </div>
               <div className="flex items-center justify-center">
@@ -74,14 +86,104 @@ const plans = () => {
               </div>
               <div className="flex gap-6 p-6 text-[#f1f6f4] rounded-sm cursor-pointer border-[4px] border-solid border-[#bac8ce max-w-[680px] mx-auto">
                 <div className="relative w-6 h-6 rounded-full border-[2px] border-solid border-[#000] flex items-center justify-center"></div>
-                <div>
-                  <h3 className="text-lg text-[#032b41] font-semibold mb-2">Premium Monthly</h3>
-                  <p className="text-2xl text-[#032b41] font-semibold mb-2">$9.99/month</p>
+                <div className="">
+                  <h3 className="text-lg text-[#032b41] font-semibold mb-2">
+                    Premium Monthly
+                  </h3>
+                  <p className="text-2xl text-[#032b41] font-semibold mb-2">
+                    $9.99/month
+                  </p>
                   <p className="text-sm text-[#6b757b]">No trial included</p>
                 </div>
               </div>
-              <div>7 day trial</div>
-              <div>accordion</div>
+              <div className="flex flex-col items-center mx-auto my-10">
+                <button className="btn max-w-[300px] ">7 Day free trial</button>
+                <div className="text-[#6b757b] text-xs items-center">
+                  Cancel your trial at any time before it ends, and you wont be
+                  charged.
+                </div>
+              </div>
+              <div className="faq__wrapper">
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography>How does the free 7-day trial work?</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      Begin your complimentary 7-day trial with a Summarist
+                      annual membership. You are under no obligation to continue
+                      your subscription, and you will only be billed when the
+                      trial period expires. With Premium access, you can learn
+                      at your own pace and as frequently as you desire, and you
+                      may terminate your subscription prior to the conclusion of
+                      the 7-day free trial.
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
+                  >
+                    <Typography>
+                      Can I switch subscriptions from monthly to yearly, or
+                      yearly to monthly?
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      While an annual plan is active, it is not feasible to
+                      switch to a monthly plan. However, once the current month
+                      ends, transitioning from a monthly plan to an annual plan
+                      is an option.
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3a-content"
+                    id="panel3a-header"
+                  >
+                    <Typography>
+                      What&apos;s included in the Premium plan?
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      Premium membership provides you with the ultimate
+                      Summarist experience, including unrestricted entry to many
+                      best-selling books high-quality audio, the ability to
+                      download titles for offline reading, and the option to
+                      send your reads to your Kindle.
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel4a-content"
+                    id="panel4a-header"
+                  >
+                    <Typography>
+                      Can I cancel during my trial or subscription?
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      You will not be charged if you cancel your trial before
+                      its conclusion. While you will not have complete access to
+                      the entire Summarist library, you can still expand your
+                      knowledge with one curated book per day.
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
             </div>
             <section id="footer">
               Footer
