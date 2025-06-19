@@ -13,13 +13,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const plans = () => {
   return (
       <div className="w-full">
-        plan
-        <div className="relative text-center w-full pt-12 mb-6">
-          plan header wrapper
-          <div className="max-w-[1000px] mx-auto my-0 text-[#fff] px-6">
-            plan-header
-            <h1 className="text-5xl font-bold mb-10">
-              Get unlimited access to many amazing books to read
+        <div className="relative text-center w-full mb-6">
+          <div className="w-full mx-auto my-0 text-[#fff] px-6 bg-[#032b41] rounded-b-[16rem]">
+            <h1 className="text-5xl font-bold mb-10 pt-12">
+              Get unlimited access to many amazing <br /> books to read
             </h1>
             <h3 className="text-xl mb-8">
               Turn ordinary moments into amazing learning opportunities
@@ -29,30 +26,30 @@ const plans = () => {
                 className="rounded-t-[180px]"
                 src={PricingTop}
                 alt=""
-                width={360}
-                height={360}
+                width={350}
+                height={350}
               />
             </figure>
           </div>
           <div className="max-w-[1070px] w-full mx-auto px-6">
             <div className="py-10 w-full">
               <div className="grid grid-cols-3 justify-center text-center gap-6 max-w-[800px] mx-auto mb-[56px]">
-                <div className="flex flex-col items-center justify-center">
-                  <FaFileAlt className="text-6xl mb-4" />
+                <div className="flex flex-col items-center justify-center pt-8">
+                  <FaFileAlt className="text-6xl mb-4 text-[#032b41]" />
                   <p>
                     <span className="text-[#394547]">Key ideas in few min</span>{" "}
                     with many books to read
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <RiPlantFill className="text-6xl mb-4" />
+                  <RiPlantFill className="text-6xl mb-4 text-[#032b41]" />
                   <p>
                     <span className="text-[#394547]">3 Million</span> people
                     growing with Summarist everyday
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <FaHandshake className="text-6xl mb-4" />
+                  <FaHandshake className="text-6xl mb-4 text-[#032b41]" />
                   <p>
                     <span className="text-[#394547]">
                       Precise recommendations
