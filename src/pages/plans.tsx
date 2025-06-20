@@ -20,7 +20,7 @@ const Plans = () => {
   return (
     <div className="w-full">
       <div className="relative text-center w-full mb-6">
-        <div className="w-full mx-auto my-0 text-[#fff] px-6 bg-[#032b41] rounded-b-[16rem]">
+        <div className="w-full mx-auto my-0 text-[#fff] px-6 bg-[#032b41] rounded-b-[16rem] max-[780px]:rounded-b-none">
           <h1 className="text-5xl font-bold mb-10 pt-12">
             Get unlimited access to many amazing <br /> books to read
           </h1>
@@ -39,8 +39,8 @@ const Plans = () => {
         </div>
         <div className="max-w-[1070px] w-full mx-auto px-6">
           <div className="py-10 w-full">
-            <div className="grid grid-cols-3 justify-center text-center gap-6 max-w-[800px] mx-auto mb-[56px]">
-              <div className="flex flex-col items-center justify-center pt-8">
+            <div className="grid grid-cols-3 justify-center text-center gap-6 max-w-[800px] mx-auto mb-[56px] pt-8">
+              <div className="flex flex-col items-center justify-center">
                 <FaFileAlt className="text-6xl mb-4 text-[#032b41]" />
                 <p>
                   <span className="text-[#394547]">Key ideas in few min</span>{" "}
