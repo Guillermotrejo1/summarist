@@ -3,6 +3,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Skeleton from "@mui/material/Skeleton";
 
 interface Book {
   id: string;
@@ -25,34 +26,43 @@ interface Book {
 
 const Selected = () => {
   const [books, setBooks] = useState<Book | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(
           "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected"
         );
         setBooks(response.data[0]);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
     };
     fetchData();
   }, []);
 
   return (
-    <div className="">
+    <>
       <h1 className="text-[22px] font-bold text-[#032b41] mb-4">
         Selected just for you
       </h1>
-      <Link href={`book/${books?.id}`}
-        className="flex bg-[#fbefd6] p-6 mb-6 rounded-[6px] gap-6 w-[calc(66.66%)] h-50"
-      >
-        <div>
+      {isLoading ? (
+        <>
+          <div className="mr-2 mb-2">
+            <Skeleton variant="rectangular" width={700} height={200} />
+          </div>
+        </>
+      ) : (
+        <Link
+          href={`book/${books?.id}`}
+          className="flex bg-[#fbefd6] p-6 mb-6 rounded-[6px] gap-6 w-[calc(66.66%)] h-50"
+        >
           <div className="flex w-[calc(66.66%)]">
-            <h2 className="leading-5">
-              {books?.subTitle}
-            </h2>
+            <h2 className="leading-5">{books?.subTitle}</h2>
             <div className="w-[1px] bg-[#bac8ce] mx-4 h-38"></div>
             <div>
               {books && (
@@ -79,9 +89,9 @@ const Selected = () => {
               )}
             </div>
           </div>
-        </div>
-      </Link>
-    </div>
+        </Link>
+      )}
+    </>
   );
 };
 

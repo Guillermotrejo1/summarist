@@ -42,11 +42,11 @@ const Sidebar = () => {
               <RxBookmark className="mr-2 text-2xl" />
               My Library
             </Link>
-            <div className="flex mb-10">
+            <div className="flex mb-10 cursor-not-allowed">
               <RiBallPenLine className="mr-2 text-2xl" />
               Highlights
             </div>
-            <div className="flex mb-10">
+            <div className="flex mb-10 cursor-not-allowed">
               <IoIosSearch className="mr-2 text-2xl" />
               Search
             </div>
@@ -57,7 +57,7 @@ const Sidebar = () => {
             <SlSettings className="mr-2 text-2xl" />
             Settings
           </Link>
-          <div className="flex ml-4 mb-8">
+          <div className="flex ml-4 mb-8 cursor-not-allowed">
             <IoMdHelpCircleOutline className="mr-2 text-2xl" />
             Help & Support
           </div>
