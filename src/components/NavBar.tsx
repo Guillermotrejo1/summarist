@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 const NavBar = () => {
   return (
     <nav className="h-[80px] flex justify-center">
-      <div className="flex justify-between items-center max-w-[1070px] w-full h-full mx-auto">
+      <div className="flex justify-between items-center max-w-[1070px] w-full h-full mx-auto px-4">
         <div className="flex justify-center items-center">
           <Image
             src={logo}
@@ -20,11 +20,11 @@ const NavBar = () => {
             Login
           </li>
 
-          <li className="cursor-not-allowed text-[#032b41]">About</li>
+          <li className="cursor-not-allowed hidden md:block text-[#032b41]">About</li>
 
-          <li className="cursor-not-allowed text-[#032b41]">Contact</li>
+          <li className="cursor-not-allowed hidden md:block text-[#032b41]">Contact</li>
 
-          <li className="cursor-not-allowed text-[#032b41]">Help</li>
+          <li className="cursor-not-allowed hidden md:block text-[#032b41]">Help</li>
         </ul>
       </div>
     </nav>
