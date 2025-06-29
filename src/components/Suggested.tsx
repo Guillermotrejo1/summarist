@@ -38,9 +38,9 @@ const Suggested = () => {
           "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested"
         );
         setBooks(response.data.slice(0, 5));
-        setIsLoading(false)
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
         setIsLoading(false);
       }
     };
