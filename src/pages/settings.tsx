@@ -11,8 +11,11 @@ const Settings = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(setIsLoading(false));
-  }, [3000]);
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+    }, 0);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <>

@@ -113,20 +113,16 @@ const Id = () => {
                   />
                 </div>
               </div>
-              <div>
                 <Skeleton
                   width={700}
                   height={400}
-                  sx={{ borderRadius: "0px" }}
+                  sx={{ borderRadius: "0px", marginBottom: "0" }}
                 />
-              </div>
-              <div>
                 <Skeleton
                   width={700}
                   height={400}
-                  sx={{ borderRadius: "0px" }}
+                  sx={{ borderRadius: "0px", marginBottom: "0" }}
                 />
-              </div>
             </>
           ) : (
             bookInfo && (
