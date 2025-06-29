@@ -21,10 +21,10 @@ const Plans = () => {
     <div className="w-full">
       <div className="relative text-center w-full mb-6">
         <div className="w-full mx-auto my-0 text-[#fff] px-6 bg-[#032b41] rounded-b-[16rem] max-[780px]:rounded-b-none">
-          <h1 className="text-5xl font-bold mb-10 pt-12">
+          <h1 className="text-[26px] md:text-5xl font-bold mb-10 pt-12">
             Get unlimited access to many amazing <br /> books to read
           </h1>
-          <h3 className="text-xl mb-8">
+          <h3 className="text-[16px] md:text-xl mb-8">
             Turn ordinary moments into amazing learning opportunities
           </h3>
           <figure className="flex items-center justify-center">
@@ -39,7 +39,7 @@ const Plans = () => {
         </div>
         <div className="max-w-[1070px] w-full mx-auto px-6">
           <div className="py-10 w-full">
-            <div className="grid grid-cols-3 justify-center text-center gap-6 max-w-[800px] mx-auto mb-[56px] pt-8">
+            <div className="grid md:grid-cols-3 justify-center text-center gap-6 max-w-[800px] mx-auto mb-[56px] pt-8">
               <div className="flex flex-col items-center justify-center">
                 <FaFileAlt className="text-6xl mb-4 text-[#032b41]" />
                 <p>
@@ -64,7 +64,7 @@ const Plans = () => {
                 </p>
               </div>
             </div>
-            <div className="text-[32px] text-[#032b41] text-center mb-8 font-bold">
+            <div className="text-2xl md:text-[32px] text-[#032b41] text-center mb-8 font-bold">
               Choose the plan that fits you
             </div>
             <div
@@ -85,13 +85,13 @@ const Plans = () => {
                 )}
               </div>
               <div>
-                <h3 className="text-lg text-[#032b41] font-semibold mb-2 text-left">
+                <h3 className="text-[16px] md:text-lg text-[#032b41] font-semibold mb-2 text-left">
                   Premium Plus Yearly
                 </h3>
-                <p className="text-2xl text-[#032b41] font-semibold mb-2 text-left">
+                <p className="text-[20px] md:text-2xl text-[#032b41] font-semibold mb-2 text-left">
                   $99.99/year
                 </p>
-                <p className="text-sm text-[#6b757b] text-left">
+                <p className="text-[12px] md:text-sm text-[#6b757b] text-left">
                   7-day Free trial included
                 </p>
               </div>
@@ -119,13 +119,13 @@ const Plans = () => {
                 )}
               </div>
               <div className="">
-                <h3 className="text-lg text-[#032b41] font-semibold mb-2 text-left">
+                <h3 className="text-[16px] md:text-lg text-[#032b41] font-semibold mb-2 text-left">
                   Premium Monthly
                 </h3>
-                <p className="text-2xl text-[#032b41] font-semibold mb-2 text-left">
+                <p className="text-[20px] md:text-2xl text-[#032b41] font-semibold mb-2 text-left">
                   $9.99/month
                 </p>
-                <p className="text-sm text-[#6b757b] text-left">
+                <p className="text-[12px] md:text-sm text-[#6b757b] text-left">
                   No trial included
                 </p>
               </div>
@@ -146,12 +146,21 @@ const Plans = () => {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  <Typography sx={{ fontSize: "1.5rem", fontWeight: 700 }}>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "1.25rem", md: "1.5rem" },
+                      fontWeight: 700,
+                    }}
+                  >
                     How does the free 7-day trial work?
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
+                  <Typography
+                    sx={{
+                      fontSize: { sm: "0.875rem", md: "1rem" },
+                    }}
+                  >
                     Begin your complimentary 7-day trial with a Summarist annual
                     membership. You are under no obligation to continue your
                     subscription, and you will only be billed when the trial
@@ -168,13 +177,22 @@ const Plans = () => {
                   aria-controls="panel2a-content"
                   id="panel2a-header"
                 >
-                  <Typography sx={{ fontSize: "1.5rem", fontWeight: 700 }}>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "1.25rem", md: "1.5rem" },
+                      fontWeight: 700,
+                    }}
+                  >
                     Can I switch subscriptions from monthly to yearly, or yearly
                     to monthly?
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
+                  <Typography
+                    sx={{
+                      fontSize: { sm: "0.875rem", md: "1rem" },
+                    }}
+                  >
                     While an annual plan is active, it is not feasible to switch
                     to a monthly plan. However, once the current month ends,
                     transitioning from a monthly plan to an annual plan is an
@@ -188,12 +206,21 @@ const Plans = () => {
                   aria-controls="panel3a-content"
                   id="panel3a-header"
                 >
-                  <Typography sx={{ fontSize: "1.5rem", fontWeight: 700 }}>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "1.25rem", md: "1.5rem" },
+                      fontWeight: 700,
+                    }}
+                  >
                     What&apos;s included in the Premium plan?
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
+                  <Typography
+                    sx={{
+                      fontSize: { sm: "0.875rem", md: "1rem" },
+                    }}
+                  >
                     Premium membership provides you with the ultimate Summarist
                     experience, including unrestricted entry to many
                     best-selling books high-quality audio, the ability to
@@ -208,12 +235,21 @@ const Plans = () => {
                   aria-controls="panel4a-content"
                   id="panel4a-header"
                 >
-                  <Typography sx={{ fontSize: "1.5rem", fontWeight: 700 }}>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "1.25rem", md: "1.5rem" },
+                      fontWeight: 700,
+                    }}
+                  >
                     Can I cancel during my trial or subscription?
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
+                  <Typography
+                    sx={{
+                      fontSize: { sm: "0.875rem", md: "1rem" },
+                    }}
+                  >
                     You will not be charged if you cancel your trial before its
                     conclusion. While you will not have complete access to the
                     entire Summarist library, you can still expand your
