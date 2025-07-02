@@ -56,7 +56,7 @@ const Id = () => {
   return (
     <>
       <SearchBar />
-      <div className="w-[200px] fixed top-0 left-0">
+      <div className="w-[200px] hidden md:block fixed top-0 left-0">
         <Sidebar />
       </div>
       <div className="w-[calc(100%-200px)] ml-[200px] px-6 pt-6">

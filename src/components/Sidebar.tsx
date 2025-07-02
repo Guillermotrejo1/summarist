@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`bg-[#f7faf9] w-50 min-w-50 fixed h-screen top-0 left-0 z-50 transition duration-300 ease-in-out`}
+      className={`bg-[#f7faf9] fixed h-screen top-0 left-0 z-50 transition duration-300 ease-in-out w-50 min-w-50 md:translate-x-0 -translate-x-full`}
     >
       <div>
         <Image

@@ -12,7 +12,7 @@ const forYou = () => {
     <div className="flex flex-col items-center justify-center">
       <Sidebar />
       <SearchBar />
-      <div className="py-10 w-[calc(100%-200px)] ml-50 h-screen">
+      <div className="py-10 w-full md:ml-50 h-screen">
         <div className="max-w-[1070px] w-full m-auto px-6">
           <Selected />
           <Recommened />
