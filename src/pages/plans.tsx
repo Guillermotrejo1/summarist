@@ -19,7 +19,7 @@ const Plans = () => {
 
   return (
     <div className="w-full">
-      <div className="relative text-center w-full mb-6">
+      <div className="relative text-center w-full">
         <div className="w-full mx-auto my-0 text-[#fff] px-6 bg-[#032b41] rounded-b-[16rem] max-[780px]:rounded-b-none">
           <h1 className="text-[26px] md:text-5xl font-bold mb-10 pt-12">
             Get unlimited access to many amazing <br /> books to read
