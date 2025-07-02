@@ -47,14 +47,14 @@ const Recommended = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <h1 className="text-[22px] font-bold text-[#032b41] mb-4">
         Recommended For You
       </h1>
       <h4 className="font-light text-[#394547] mb-4">
         We Think you&apos;ll like this
       </h4>
-      <div className="flex flex-wrap">
+      <div className="grid grid-cols-5">
         {isLoading
           ? new Array(5).fill(0).map((_, index) => (
               <div className="p-2" key={index}>
@@ -97,7 +97,7 @@ const Recommended = () => {
               <Link
                 key={book.id}
                 href={`book/${book.id}`}
-                className="w-1/5 pt-[32px] pr-[12px] pb-[12px] pl-[12px] rounded-sm hover:bg-[#f4f5f5d4] flex items-center justify-center"
+                className="pt-[32px] pr-[12px] pb-[12px] pl-[12px] rounded-sm hover:bg-[#f4f5f5d4] flex items-center justify-center"
               >
                 <div>
                   <Image
@@ -133,7 +133,7 @@ const Recommended = () => {
               </Link>
             ))}
       </div>
-    </div>
+    </>
   );
 };
 
