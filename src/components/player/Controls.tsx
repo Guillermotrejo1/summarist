@@ -19,7 +19,7 @@ export default function Controls({
 }: ControlsProps) {
   return (
     <>
-      <div className="flex gap-4 items-center ml-32">
+      <div className="flex gap-4 items-center md:ml-32">
         <button onClick={() => skipBackward(10)}> {/* Call skipBackward with 10 seconds */}
           <GrBackTen className="text-[28px]" />
         </button>
