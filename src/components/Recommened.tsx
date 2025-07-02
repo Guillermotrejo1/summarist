@@ -36,7 +36,7 @@ const Recommended = () => {
         const response = await axios.get(
           "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended"
         );
-        setBooks(response.data.slice(0, 5));
+        setBooks(response.data.slice(0, 8));
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -54,7 +54,14 @@ const Recommended = () => {
       <h4 className="font-light text-[#394547] mb-4">
         We Think you&apos;ll like this
       </h4>
-      <div className="grid grid-cols-5">
+      <div
+        className="flex items-center gap-12 overflow-x-scroll max-w-5xl"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
         {isLoading
           ? new Array(5).fill(0).map((_, index) => (
               <div className="p-2" key={index}>

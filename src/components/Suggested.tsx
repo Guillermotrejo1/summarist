@@ -37,7 +37,7 @@ const Suggested = () => {
         const response = await axios.get(
           "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested"
         );
-        setBooks(response.data.slice(0, 5));
+        setBooks(response.data.slice(0, 7));
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -53,7 +53,14 @@ const Suggested = () => {
         Suggested Books
       </h1>
       <h4 className="font-light text-[#394547] mb-4">Browse those books</h4>
-      <div className="flex">
+       <div
+        className="flex items-center gap-12 overflow-x-scroll max-w-5xl"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
         {isLoading
           ? new Array(5).fill(0).map((_, index) => (
               <div className="p-2" key={index}>
@@ -96,7 +103,7 @@ const Suggested = () => {
               <Link
                 key={book.id}
                 href={`book/${book.id}`}
-                className="w-1/5 pt-[32px] pr-[12px] pb-[12px] pl-[12px] rounded-sm hover:bg-[#f4f5f5d4] flex items-center justify-center"
+                className="pt-[32px] pr-[12px] pb-[12px] pl-[12px] rounded-sm hover:bg-[#f4f5f5d4] flex items-center justify-center"
               >
                 <div>
                   <Image src={book.imageLink} width={170} height={100} alt="" />
