@@ -59,21 +59,21 @@ const Selected = () => {
       ) : (
         <Link
           href={`book/${books?.id}`}
-          className="flex bg-[#fbefd6] p-6 mb-6 rounded-[6px] gap-6 w-[calc(66.66%)] h-50"
+          className="flex bg-[#fbefd6] p-6 mb-6 rounded-[6px] gap-6 w-full md:w-[calc(66.66%)] h-auto"
         >
-          <div className="flex w-[calc(66.66%)]">
-            <h2 className="leading-5">{books?.subTitle}</h2>
-            <div className="w-[1px] bg-[#bac8ce] mx-4 h-38"></div>
+          <div className="flex flex-col md:flex-row w-full">
+            <h2 className="leading-5 mb-2 md:mb-0">{books?.subTitle}</h2>
+            <div className="w-[1px] bg-[#bac8ce] mr-10 h-38 hidden md:block"></div>
             <div>
               {books && (
-                <div className="flex">
+                <div className="flex mr-22">
                   <Image
                     src={books.imageLink}
-                    width={150}
-                    height={150}
+                    width={140}
+                    height={140}
                     alt=""
                   />
-                  <div className="flex flex-col ml-4">
+                  <div className="flex flex-col mr-8 px-6">
                     <h1 className="font-bold whitespace-nowrap">
                       {books.title}
                     </h1>
