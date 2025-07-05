@@ -13,9 +13,7 @@ import { useRouter } from "next/router";
 const Sidebar = () => {
 
  const router = useRouter();
-  
-   
-  const isPlayerRoute = router.pathname.startsWith('/player');
+ const isPlayerRoute = router.pathname.startsWith('/player');
 
 
   return (

@@ -1,5 +1,3 @@
-import SearchBar from "@/components/SearchBar";
-import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { IoIosStarOutline } from "react-icons/io";
@@ -12,6 +10,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Skeleton from "@mui/material/Skeleton";
+import Layout from "@/components/Layout";
 
 interface Book {
   id: string;
@@ -61,8 +60,7 @@ const Id = () => {
 
   return (
     <>
-      <SearchBar />
-      <Sidebar />
+      <Layout>
       <div className="w-[calc(100%-200px)] ml-50 h-screen py-10">
         <div className="max-w-[1070px] w-full mx-auto px-6">
           {isLoading ? (
@@ -215,6 +213,7 @@ const Id = () => {
           )}
         </div>
       </div>
+      </Layout>
     </>
   );
 };

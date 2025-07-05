@@ -1,7 +1,6 @@
+import Layout from "@/components/Layout";
 import Recommened from "@/components/Recommened";
-import SearchBar from "@/components/SearchBar";
 import Selected from "@/components/Selected";
-import Sidebar from "@/components/Sidebar";
 import Suggested from "@/components/Suggested";
 import React from "react";
 
@@ -9,10 +8,9 @@ import React from "react";
 const forYou = () => {
   
   return (
+    <Layout>
     <div className="flex flex-col items-center justify-center">
-      <Sidebar />
-      <SearchBar />
-      <div className="py-10 w-full md:ml-50 h-screen">
+      <div className="py-10 w-full md:ml-50 h-auto">
         <div className="max-w-[1070px] w-full m-auto px-6">
           <Selected />
           <Recommened />
@@ -20,6 +18,7 @@ const forYou = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 
