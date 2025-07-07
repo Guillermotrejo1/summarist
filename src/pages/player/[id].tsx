@@ -1,5 +1,3 @@
-import SearchBar from "@/components/SearchBar";
-import Sidebar from "@/components/Sidebar";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
