@@ -89,7 +89,7 @@ const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) 
   };
 
   return (
-    <div className="sticky bottom-0 left-0 w-full z-10">
+    <div className="sticky bottom-0 left-0 w-full z-50">
       <div className="h-45 md:h-20 bg-[#042330] flex flex-col md:gap-15 md:flex-row justify-between items-center text-white p-[0.5rem_10px]">
         {/* Pass props to TrackInfo */}
         <TrackInfo title={title} author={author} imageLink={imageLink} />
