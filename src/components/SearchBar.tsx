@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CiClock2 } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
-import { IoMdClose } from "react-icons/io"; // Import the close icon
+import { IoMdClose } from "react-icons/io";
 
 interface Book {
   id: string;
