@@ -38,6 +38,7 @@ const Sidebar = () => {
     };
   }, []);
 
+
   return (
     <div>
       <button onClick={toggleSidebar} className="md:hidden p-4">

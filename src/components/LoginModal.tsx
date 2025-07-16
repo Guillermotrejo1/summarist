@@ -46,12 +46,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       //Redirect or perform additional actions after login
+      setIsSignUp(false)
       router.push("/forYou");
     } catch (error) {
       console.error("Error logging in user:", error);
     } finally {
       setIsLoading(false);
     }
+  };
+
+ const toggleForm = () => {
+    setIsSignUp(!isSignUp);
   };
 
   return (
@@ -66,7 +71,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
               <div className="w-full justify-end">
                 <button className="flex btn-google items-center justify-center w-full mb-4 relative">
                   <FcGoogle className="absolute left-2 text-3xl bg-[#fff] rounded" />
-                  <span>Login with Google</span>
+                  <span>Sign up with Google</span>
                 </button>
               </div>
               <div className="mb-4">
@@ -87,7 +92,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
                 onChange={(e) => setPassword(e.target.value)} //Update password state
               />
               <button className="btn w-full flex items-center mb-4" onClick={login}>
-                Login
+                Sign up
               </button>
             </div>
             <button
@@ -98,9 +103,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
             </button>
             <button
               className="absolute right-0 rounded-b-lg hover:!bg-[#e0e5e3] text-[#116be9] w-full text-center p-2 !bg-[#f1f6f4]"
-              onClick={register}
+              onClick={toggleForm}
             >
-              Dont have an account?
+              {isSignUp ? "Already have an account?" : "Dont have an account?"}
             </button>
           </>
         ) : (
@@ -165,7 +170,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
             </div>
             <button
               className="absolute right-0 rounded-b-lg hover:!bg-[#e0e5e3] text-[#116be9] w-full text-center p-2 !bg-[#f1f6f4]"
-              onClick={register}
+              onClick={toggleForm}
             >
               Dont have an account?
             </button>
