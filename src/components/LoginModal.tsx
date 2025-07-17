@@ -46,7 +46,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       //Redirect or perform additional actions after login
-      setIsSignUp(false)
+      setIsSignUp(false);
       router.push("/forYou");
     } catch (error) {
       console.error("Error logging in user:", error);
@@ -55,7 +55,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
     }
   };
 
- const toggleForm = () => {
+  const toggleForm = () => {
     setIsSignUp(!isSignUp);
   };
 
@@ -70,8 +70,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
             <div className="flex flex-col justify-center items-center">
               <div className="w-full justify-end">
                 <button className="flex btn-google items-center justify-center w-full mb-4 relative">
-                  <FcGoogle className="absolute left-2 text-3xl bg-[#fff] rounded" />
-                  <span>Sign up with Google</span>
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#fff]"></div>
+                    </div>
+                  ) : (
+                    <>
+                      <FcGoogle className="absolute left-2 text-3xl bg-[#fff] rounded" />
+                      <span>Sign up with Google</span>
+                    </>
+                  )}
                 </button>
               </div>
               <div className="mb-4">
@@ -91,8 +99,20 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} //Update password state
               />
-              <button className="btn w-full flex items-center mb-4" onClick={login}>
-                Sign up
+              <button
+                className="flex btn items-center justify-center w-full mb-4 relative"
+                onClick={register}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#fff]"></div>
+                  </div>
+                ) : (
+                  <>
+                    <span>Sign up</span>
+                  </>
+                )}
               </button>
             </div>
             <button
@@ -134,8 +154,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
               </div>
               <div className="w-full justify-end">
                 <button className="flex btn-google items-center justify-center w-full mb-4 relative">
-                  <FcGoogle className="absolute left-2 text-3xl bg-[#fff] rounded" />
-                  <span>Login with Google</span>
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#fff]"></div>
+                    </div>
+                  ) : (
+                    <>
+                      <FcGoogle className="absolute left-2 text-3xl bg-[#fff] rounded" />
+                      <span>Login with Google</span>
+                    </>
+                  )}
                 </button>
               </div>
               <div className="mb-4">
@@ -155,8 +183,20 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} //Update password state
               />
-              <button className="btn w-full flex items-center" onClick={login}>
-                Login
+              <button
+                className="flex btn items-center justify-center w-full mb-4 relative"
+                onClick={login}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#fff]"></div>
+                  </div>
+                ) : (
+                  <>
+                    <span>Login</span>
+                  </>
+                )}
               </button>
             </div>
             <button

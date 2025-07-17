@@ -38,7 +38,6 @@ const Sidebar = () => {
     };
   }, []);
 
-
   return (
     <div>
       <button onClick={toggleSidebar} className="md:hidden p-4">
@@ -96,7 +95,7 @@ const Sidebar = () => {
             <div className="flex ml-4 mb-8 cursor-not-allowed">
               <IoMdHelpCircleOutline className="mr-2 text-2xl" /> Help & Support
             </div>
-            <div className="flex ml-4 mb-8">
+            <div className="flex ml-4 mb-8 cursor-pointer">
               <MdLogout className="mr-2 text-2xl" /> Logout
             </div>
           </div>
