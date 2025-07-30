@@ -4,11 +4,13 @@ import Image from "next/image";
 import Login from "../assets/login.png";
 import { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
+import { useRouter } from "next/router";
 
 const Settings = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isPremium, setIsPremium] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -17,11 +19,15 @@ const Settings = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  const subscriptionClick = () => {
+    router.push("/plans")
+  }
+
   return (
     <>
       <SearchBar />
       <Sidebar />
-      <div className="w-full py-10 mx-20">
+      <div className="w-full py-10 mx-20 transition-all slide-in-right duration-100">
         <div className="max-w-[1070px] w-full mx-auto px-6">
           <div className="mb-[32px]">
             <h1 className="text-[32px] font-bold mb-1 text-[#032b41]">
@@ -92,7 +98,7 @@ const Settings = () => {
                   Your Subscription plan
                 </h3>
                 <div className="mb-2">Basic</div>
-                <button className="btn max-w-[200px] mb-6">
+                <button className="btn max-w-[200px] mb-6" onClick={subscriptionClick}>
                   Upgrade to Premium
                 </button>
                 <div className="border-b-[1px] border-[#e1e7ea] mb-4"></div>

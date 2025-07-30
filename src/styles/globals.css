@@ -249,5 +249,29 @@ input[type='range']:active::-moz-range-thumb {
 }
 
 .custom-shadow {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s ease-in-out;
+}
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.5s ease-in-out;
+}
+@keyframes slideInRight {
+  0% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
