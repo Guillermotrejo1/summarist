@@ -103,9 +103,14 @@ const Suggested = () => {
               <Link
                 key={book.id}
                 href={`book/${book.id}`}
-                className="pt-[32px] pr-[12px] pb-[12px] pl-[12px] rounded-sm hover:bg-[#f4f5f5d4] flex items-center justify-center"
+                className="pt-[32px] pr-[12px] pb-[12px] pl-[12px] rounded-sm hover:bg-[#f4f5f5d4] flex items-center justify-center relative"
               >
                 <div>
+                  {book.subscriptionRequired && (
+                    <div className="absolute top-1 right-2 bg-[#032b41] text-white text-[10px] font-bold py-1 px-2 rounded-full">
+                      Premium
+                    </div>
+                  )}
                   <Image src={book.imageLink} width={170} height={100} alt="" />
                   <h2 className="font-bold text-[#032b41] mb-2 line-clamp-2 w-[150px]">
                     Zero to One

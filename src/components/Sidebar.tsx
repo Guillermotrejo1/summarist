@@ -11,18 +11,21 @@ import { MdLogout } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
+import { auth } from "@/firebase/firebase";
+import LoginModal from "./LoginModal";
 
 const Sidebar = () => {
   const router = useRouter();
   const isPlayerRoute = router.pathname.startsWith("/player");
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
- 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -37,6 +40,27 @@ const Sidebar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const logout = async () => {
+    try {
+      await auth.signOut();
+      setIsLoggedIn(false); 
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
+
+  const openLoginModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const toggleLogin = () => {
+    setIsLoggedIn(!isLoggedIn); // Toggle the login state
+  };
 
   return (
     <div>
@@ -95,12 +119,30 @@ const Sidebar = () => {
             <div className="flex ml-4 mb-8 cursor-not-allowed">
               <IoMdHelpCircleOutline className="mr-2 text-2xl" /> Help & Support
             </div>
-            <div className="flex ml-4 mb-8 cursor-pointer">
-              <MdLogout className="mr-2 text-2xl" /> Logout
+            <div
+              className="flex ml-4 mb-8 cursor-pointer"
+              onClick={isLoggedIn ? logout : toggleLogin}
+            >
+              {isLoggedIn ? (
+                <div className="flex">
+                  <MdLogout className="mr-2 text-2xl" />
+                  <span>Logout</span>
+                </div>
+              ) : (
+                <div className="flex" onClick={openLoginModal}>
+                  <MdLogout className="mr-2 text-2xl" />
+                  <span>Login</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black/40 z-[100] flex justify-center items-center">
+          <LoginModal onClose={closeLoginModal} />
+        </div>
+      )}
     </div>
   );
 };
