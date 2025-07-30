@@ -8,9 +8,9 @@ import {} from "react-icons/ai";
 import { BsBook, BsBookmark } from "react-icons/bs";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import Skeleton from "@mui/material/Skeleton";
 import Layout from "@/components/Layout";
+import { useRouter } from "next/router";
 
 interface Book {
   id: string;
@@ -36,6 +36,15 @@ const Id = () => {
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
   const id = params?.id;
+  const router = useRouter();
+
+  const handleReadOrListen = () => {
+    if (bookInfo?.subscriptionRequired) {
+      router.push("/plans");
+    } else {
+      router.push(`/player/${bookInfo?.id}`);
+    }
+  };
 
   useEffect(() => {
     if (!id) return;
@@ -138,7 +147,7 @@ const Id = () => {
                     <h1 className="flex text-[32px] font-bold text-[#032b41]">
                       {bookInfo.title}
                       {bookInfo.subscriptionRequired && (
-                       <h2 className="ml-2">(Premium)</h2>
+                        <h2 className="ml-2">(Premium)</h2>
                       )}
                     </h1>
                     <p className="font-bold text-[#032b41] mb-4">
@@ -173,18 +182,20 @@ const Id = () => {
                       </div>
                     </div>
                     <div className="flex gap-2 mb-4">
-                      <Link href={`/player/${bookInfo?.id}`}>
-                        <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
-                          <BsBook />
-                          <span>Read</span>
-                        </button>
-                      </Link>
-                      <Link href={`/player/${bookInfo?.id}`}>
-                        <button className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out">
-                          <SlMicrophone />
-                          <span>Listen</span>
-                        </button>
-                      </Link>
+                      <button
+                        className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out"
+                        onClick={() => handleReadOrListen()}
+                      >
+                        <BsBook />
+                        <span>Read</span>
+                      </button>
+                      <button
+                        className="flex items-center justify-center w-36 h-12 !bg-[#032b41] text-[#fff] text-[16px] rounded-sm cursor-pointer gap-2 transition duration-200 ease-in-out"
+                        onClick={() => handleReadOrListen()}
+                      >
+                        <SlMicrophone />
+                        <span>Listen</span>
+                      </button>
                     </div>
                     <div className="flex items-center gap-2 mb-10">
                       <BsBookmark className="text-lg text-[#0365f2]" />
