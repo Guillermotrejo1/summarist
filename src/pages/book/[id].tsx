@@ -135,8 +135,11 @@ const Id = () => {
                     />
                   </div>
                   <div className="w-full">
-                    <h1 className="text-[32px] font-bold text-[#032b41]">
+                    <h1 className="flex text-[32px] font-bold text-[#032b41]">
                       {bookInfo.title}
+                      {bookInfo.subscriptionRequired && (
+                       <h2 className="ml-2">(Premium)</h2>
+                      )}
                     </h1>
                     <p className="font-bold text-[#032b41] mb-4">
                       {bookInfo.author}
