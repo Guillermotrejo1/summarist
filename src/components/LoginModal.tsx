@@ -11,9 +11,10 @@ import {
 
 interface LoginModalProps {
   onClose: () => void;
+  onLogin: () => void
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
+const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -28,32 +29,38 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
   };
 
   const register = async () => {
-    setIsLoading(true);
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      console.log("User registered successfully");
-      // Redirect or perform additional actions after registration
-      router.push("/forYou");
-    } catch (error) {
-      console.error("Error registering user:", error);
-    } finally {
-      setIsLoading(false);
+  setIsLoading(true);
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    console.log("User registered successfully");
+    if (onLogin) {
+      onLogin();
     }
-  };
+    onClose();
+    router.push("/forYou");
+  } catch (error) {
+    console.error("Error registering user:", error);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
-  const login = async () => {
-    setIsLoading(true);
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      //Redirect or perform additional actions after login
-      setIsSignUp(false);
-      router.push("/forYou");
-    } catch (error) {
-      console.error("Error logging in user:", error);
-    } finally {
-      setIsLoading(false);
+ const login = async () => {
+  setIsLoading(true);
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    setIsSignUp(false);
+    if (onLogin) {
+      onLogin();
     }
-  };
+    onClose();
+    router.push("/forYou");
+  } catch (error) {
+    console.error("Error logging in user:", error);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const toggleForm = () => {
     setIsSignUp(!isSignUp);
@@ -90,14 +97,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
                 type="text"
                 placeholder="Email Address"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update email state
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="border-2 border-[#bac8ce] w-full p-2 rounded mb-4"
                 type="text"
                 placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} //Update password state
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 className="flex btn items-center justify-center w-full mb-4 relative"
@@ -174,14 +181,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
                 type="text"
                 placeholder="Email Address"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update email state
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="border-2 border-[#bac8ce] w-full p-2 rounded mb-4"
                 type="text"
                 placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} //Update password state
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 className="flex btn items-center justify-center w-full mb-4 relative"

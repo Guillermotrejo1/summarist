@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
 import { auth } from "@/firebase/firebase";
 import LoginModal from "./LoginModal";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -26,6 +27,17 @@ const Sidebar = () => {
   useEffect(() => {
     setActiveTab(router.pathname);
   }, [router.pathname]);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -49,7 +61,6 @@ const Sidebar = () => {
   const logout = async () => {
     try {
       await auth.signOut();
-      setIsLoggedIn(false);
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -63,9 +74,6 @@ const Sidebar = () => {
     setIsModalOpen(false);
   };
 
-  const toggleLogin = () => {
-    setIsLoggedIn(!isLoggedIn); // Toggle the login state
-  };
 
   return (
     <div>
@@ -162,10 +170,9 @@ const Sidebar = () => {
             </div>
             <div
               className="flex ml-4 mb-8 cursor-pointer"
-              onClick={isLoggedIn ? logout : toggleLogin}
             >
               {isLoggedIn ? (
-                <div className="flex">
+                <div className="flex" onClick={logout}>
                   <MdLogout className="mr-2 text-2xl" />
                   <span>Logout</span>
                 </div>
@@ -181,7 +188,10 @@ const Sidebar = () => {
       </div>
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black/40 z-[100] flex justify-center items-center">
-          <LoginModal onClose={closeLoginModal} />
+          <LoginModal
+            onClose={closeLoginModal}
+            onLogin={() => setIsLoggedIn(true)}
+          />
         </div>
       )}
     </div>
