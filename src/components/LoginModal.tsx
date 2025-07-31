@@ -24,7 +24,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
     setIsLoading(true);
     setTimeout(() => {
       router.push("/forYou");
-    }, 1000);
+    }, 3000);
   };
 
   const register = async () => {
