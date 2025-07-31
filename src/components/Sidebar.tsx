@@ -21,6 +21,11 @@ const Sidebar = () => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState(router.pathname);
+
+  useEffect(() => {
+    setActiveTab(router.pathname);
+  }, [router.pathname]);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -44,7 +49,7 @@ const Sidebar = () => {
   const logout = async () => {
     try {
       await auth.signOut();
-      setIsLoggedIn(false); 
+      setIsLoggedIn(false);
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -98,10 +103,34 @@ const Sidebar = () => {
         >
           <div className="flex-auto mt-10">
             <div className="flex flex-col h-14 text-[#032b41] m-4 cursor-pointer">
-              <Link href="/forYou" className="flex mb-10">
+              <Link
+                href="/forYou"
+                className="flex mb-10 relative"
+                onClick={() => setActiveTab("/forYou")}
+              >
+                <span
+                  className={`absolute top-0 h-full border-l-4 ${
+                    activeTab === "/forYou"
+                      ? "border-green-500"
+                      : "border-transparent"
+                  }`}
+                  style={{ left: "-16px", height: "50px" }}
+                ></span>
                 <PiHouseLine className="mr-2 text-2xl" /> For You
               </Link>
-              <Link href="/library" className="flex mb-10">
+              <Link
+                href="/Library"
+                className="flex mb-10 relative"
+                onClick={() => setActiveTab("/Library")}
+              >
+                <span
+                  className={`absolute top-0 h-full border-l-4 ${
+                    activeTab === "/Library"
+                      ? "border-green-500"
+                      : "border-transparent"
+                  }`}
+                  style={{ left: "-16px", height: "50px" }}
+                ></span>
                 <RxBookmark className="mr-2 text-2xl" /> My Library
               </Link>
               <div className="flex mb-10 cursor-not-allowed">
@@ -113,7 +142,19 @@ const Sidebar = () => {
             </div>
           </div>
           <div>
-            <Link href="/settings" className="flex ml-4 mb-8">
+            <Link
+              href="/settings"
+              className="flex ml-4 mb-8 relative"
+              onClick={() => setActiveTab("/settings")}
+            >
+              <span
+                className={`absolute top-0 h-full border-l-4 ${
+                  activeTab === "/settings"
+                    ? "border-green-500"
+                    : "border-transparent"
+                }`}
+                style={{ left: "-16px", height: "50px" }}
+              ></span>
               <SlSettings className="mr-2 text-2xl" /> Settings
             </Link>
             <div className="flex ml-4 mb-8 cursor-not-allowed">
