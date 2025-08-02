@@ -11,7 +11,7 @@ import {
 
 interface LoginModalProps {
   onClose: () => void;
-  onLogin: () => void
+  onLogin: () => void;
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
@@ -20,6 +20,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleGuestLogin = () => {
     setIsLoading(true);
@@ -29,38 +30,60 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
   };
 
   const register = async () => {
-  setIsLoading(true);
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    console.log("User registered successfully");
-    if (onLogin) {
-      onLogin();
+    setErrorMessage("");
+    setIsLoading(true);
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      console.log("User registered successfully");
+      if (onLogin) {
+        onLogin();
+      }
+      onClose();
+      router.push("/forYou");
+    } catch (error) {
+      const firebaseError = error as { code: string; message: string };
+      if (firebaseError.code === "auth/email-already-in-use") {
+        setErrorMessage("Email already in use. Please try a different email.");
+      } else if (firebaseError.code === "auth/weak-password") {
+        setErrorMessage(
+          "Password is too weak. Please try a stronger password."
+        );
+      } else {
+        setErrorMessage("An error occurred. Please try again later.");
+      }
+    } finally {
+      setIsLoading(false);
     }
-    onClose();
-    router.push("/forYou");
-  } catch (error) {
-    console.error("Error registering user:", error);
-  } finally {
-    setIsLoading(false);
-  }
-};
+  };
 
- const login = async () => {
-  setIsLoading(true);
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    setIsSignUp(false);
-    if (onLogin) {
-      onLogin();
+  const login = async () => {
+    setErrorMessage("");
+    setIsLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setIsSignUp(false);
+      if (onLogin) {
+        onLogin();
+      }
+      onClose();
+      router.push("/forYou");
+    } catch (error) {
+      const firebaseError = error as { code: string; message: string };
+      if (firebaseError.code === "auth/invalid-email") {
+        setErrorMessage("Invalid email. Please try again.");
+      } else if (firebaseError.code === "auth/user-not-found") {
+        setErrorMessage(
+          "User not found. Please check your email and try again."
+        );
+      } else if (firebaseError.code === "auth/wrong-password") {
+        setErrorMessage("Incorrect password. Please try again.");
+      } else {
+        setErrorMessage("An error occurred. Please try again later.");
+      }
+    } finally {
+      setIsLoading(false);
     }
-    onClose();
-    router.push("/forYou");
-  } catch (error) {
-    console.error("Error logging in user:", error);
-  } finally {
-    setIsLoading(false);
-  }
-};
+  };
 
   const toggleForm = () => {
     setIsSignUp(!isSignUp);
@@ -106,6 +129,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               <button
                 className="flex btn items-center justify-center w-full mb-4 relative"
                 onClick={register}
@@ -190,6 +214,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               <button
                 className="flex btn items-center justify-center w-full mb-4 relative"
                 onClick={login}
