@@ -110,10 +110,10 @@ const Sidebar = () => {
           } pb-5 overflow-y-auto`}
         >
           <div className="flex-auto mt-10">
-            <div className="flex flex-col h-14 text-[#032b41] m-4 cursor-pointer">
+            <div className="flex flex-col text-[#032b41] m-4 cursor-pointer">
               <Link
                 href="/forYou"
-                className="flex mb-10 relative"
+                className="flex py-5 relative"
                 onClick={() => setActiveTab("/forYou")}
               >
                 <span
@@ -122,13 +122,13 @@ const Sidebar = () => {
                       ? "border-green-500"
                       : "border-transparent"
                   }`}
-                  style={{ left: "-16px", height: "50px" }}
+                  style={{ left: "-16px", height: "60px" }}
                 ></span>
                 <PiHouseLine className="mr-2 text-2xl" /> For You
               </Link>
               <Link
                 href="/Library"
-                className="flex mb-10 relative"
+                className="flex py-5 relative"
                 onClick={() => setActiveTab("/Library")}
               >
                 <span
@@ -137,14 +137,14 @@ const Sidebar = () => {
                       ? "border-green-500"
                       : "border-transparent"
                   }`}
-                  style={{ left: "-16px", height: "50px" }}
+                  style={{ left: "-16px", height: "100%" }}
                 ></span>
                 <RxBookmark className="mr-2 text-2xl" /> My Library
               </Link>
-              <div className="flex mb-10 cursor-not-allowed">
+              <div className="flex py-5 cursor-not-allowed">
                 <RiBallPenLine className="mr-2 text-2xl" /> Highlights
               </div>
-              <div className="flex mb-10 cursor-not-allowed">
+              <div className="flex py-5 cursor-not-allowed">
                 <IoIosSearch className="mr-2 text-2xl" /> Search
               </div>
             </div>
@@ -152,7 +152,7 @@ const Sidebar = () => {
           <div>
             <Link
               href="/settings"
-              className="flex ml-4 mb-8 relative"
+              className="flex ml-4 py-5 relative"
               onClick={() => setActiveTab("/settings")}
             >
               <span
@@ -161,15 +161,15 @@ const Sidebar = () => {
                     ? "border-green-500"
                     : "border-transparent"
                 }`}
-                style={{ left: "-16px", height: "50px" }}
+                style={{ left: "-16px", height: "100%" }}
               ></span>
               <SlSettings className="mr-2 text-2xl" /> Settings
             </Link>
-            <div className="flex ml-4 mb-8 cursor-not-allowed">
+            <div className="flex ml-4 py-5 cursor-not-allowed">
               <IoMdHelpCircleOutline className="mr-2 text-2xl" /> Help & Support
             </div>
             <div
-              className="flex ml-4 mb-8 cursor-pointer"
+              className="flex ml-4 py-5 cursor-pointer"
             >
               {isLoggedIn ? (
                 <div className="flex" onClick={logout}>
