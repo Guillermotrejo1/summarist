@@ -5,7 +5,7 @@ const ReviewsSection = () => {
     <section id="reviews">
     <div className="row">
       <div className="container">
-        <div className="text-[32px] text-[#032b42] text-center mb-8 font-bold">What our members say</div>
+        <div className="text-2xl md:text-[32px] text-[#032b42] text-center mb-8 font-bold">What our members say</div>
         <div className="max-w-[600px] mx-auto">
           <div className="bg-[#fff3d7] p-4 mb-8 rounded font-light">
             <div className="text-[#032b41] flex gap-4 mb-4">

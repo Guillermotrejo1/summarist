@@ -5,7 +5,7 @@ const FeaturesSection = () => {
     <section id="features">
       <div className="container">
         <div className="row">
-          <div className="text-[32px] text-[#032b41] text-center font-bold mb-8">
+          <div className="text-2xl md:text-[32px] text-[#032b41] text-center font-bold mb-8">
             Understand books in few minutes
           </div>
           <div className="grid md:grid-cols-3 gap-10 mb-24">

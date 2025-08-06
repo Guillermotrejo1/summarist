@@ -7,7 +7,7 @@ const NumbersSection = () => {
     <section id="numbers">
       <div className="container">
         <div className="row">
-          <div className="text-[32px] text-[#032b41] text-center mb-[32px] font-bold">Start growing with Summarist now</div>
+          <div className="text-2xl md:text-[32px] text-[#032b41] text-center mb-[32px] font-bold">Start growing with Summarist now</div>
           <div className="grid md:grid-cols-3 gap-10">
             <div className="bg-[#d7e9ff] flex flex-col items-center text-center p-6 pb-10 rounded-xl">
               <div className="flex items-center h-[60px] gap-2">
