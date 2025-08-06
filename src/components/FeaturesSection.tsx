@@ -92,7 +92,7 @@ const FeaturesSection = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col-reverse md:flex-row gap-20 mb-24">
+          <div className="flex flex-col-reverse md:flex-row gap-20">
             <div className="w-full flex flex-col justify-center gap-6 bg-[#f1f6f4] py-10 px-6 mb-4 md:mb-0 ">
               <div className="flex gap-4">
                 <div className="text-[#0365f2] text-xl font-semibold mt-2">91%</div>

@@ -3,15 +3,17 @@ import landing from "@/assets/landing.png";
 import LoginModal from "./LoginModal";
 import { useState } from "react";
 
-const Landing = () => {
+
+interface LoginModalProps {
+  onClose: () => void;
+  onLogin: () => void;
+}
+
+const Landing: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
-  }
-
-  const handleCloseModal = () =>  {
-    setIsModalOpen(false);
   }
 
   return (
@@ -34,7 +36,7 @@ const Landing = () => {
               <button className="btn max-w-[300px] flex items-center mx-auto md:mx-0" onClick={handleOpenModal}>
                 Login
               </button>
-              {isModalOpen && <LoginModal onClose={handleCloseModal}/>}
+              {isModalOpen && <LoginModal onClose={onClose} onLogin={onLogin}/>}
             </div>
             <figure className="hidden w-full h-full max-w-[400px] md:block">
               <Image
