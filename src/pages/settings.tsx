@@ -27,7 +27,7 @@ const Settings = () => {
     <>
       <SearchBar />
       <Sidebar />
-      <div className="w-full py-10 mx-20 transition-all slide-in-right duration-100">
+      <div className="py-10 md:ml-64 transition-all slide-in-right duration-100">
         <div className="max-w-[1070px] w-full mx-auto px-6">
           <div className="mb-[32px]">
             <h1 className="text-[32px] font-bold mb-1 text-[#032b41]">

@@ -10,7 +10,7 @@ const forYou = () => {
   return (
     <Layout>
     <div className="flex flex-col items-center justify-center md:ml-50">
-      <div className="py-10 w-full md:ml-50 h-auto">
+      <div className="py-10 w-full md:ml-30 h-auto">
         <div className="max-w-[1070px] w-full m-auto px-6">
           <Selected />
           <Recommened />
