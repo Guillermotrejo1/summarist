@@ -59,7 +59,7 @@ const Selected = () => {
       ) : (
         <Link
           href={`book/${books?.id}`}
-          className="flex bg-[#fbefd6] p-6 mb-6 rounded-[6px] gap-6 w-full md:w-[calc(66.66%)] h-auto"
+          className="flex bg-[#fbefd6] p-6 mb-6 rounded-[4px] gap-6 md:max-w-2xl h-auto"
         >
           <div className="flex flex-col md:flex-row w-full">
             <h2 className="leading-5 mb-2 md:mb-0">{books?.subTitle}</h2>
