@@ -7,11 +7,11 @@ interface LayoutProps {
 }
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div>
-      <Sidebar />
+    <>
       <SearchBar />
+      <Sidebar />
       {children}
-    </div>
+    </>
   );
 };
 export default Layout;

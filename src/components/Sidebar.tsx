@@ -76,7 +76,7 @@ const Sidebar = () => {
 
 
   return (
-    <div className="h-0">
+    <div>
       <button onClick={toggleSidebar} className="md:hidden p-4">
         <FiMenu className="absolute right-6 top-6 text-3xl" />
       </button>

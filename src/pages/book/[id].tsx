@@ -70,7 +70,7 @@ const Id = () => {
   return (
     <>
       <Layout>
-        <div className="md:w-[calc(100%-200px)] md:ml-50 h-screen py-10">
+        <div className="w-full md:w-[calc(100%-200px)] md:ml-50 h-screen py-10">
           <div className="max-w-[1070px] w-full mx-auto px-6">
             {isLoading ? (
               <>
@@ -137,20 +137,20 @@ const Id = () => {
                   <div className="flex items-center justify-center md:block mb-6 md:h-screen md:w-lg md:ml-8">
                     <Image
                       src={bookInfo.imageLink}
-                      width={100}
-                      height={100}
+                      width={300}
+                      height={300}
                       alt=""
                       className="w-[300px] h-[300px] object-contain"
                     />
                   </div>
                   <div className="w-full">
-                    <h1 className="flex text-[32px] font-bold text-[#032b41]">
+                    <h1 className="flex text-2xl md:text-[32px] font-bold text-[#032b41] mb-4">
                       {bookInfo.title}
                       {bookInfo.subscriptionRequired && (
                         <h2 className="ml-2">(Premium)</h2>
                       )}
                     </h1>
-                    <p className="font-bold text-[#032b41] mb-4">
+                    <p className="font-bold text-sm md:text-lg text-[#032b41] mb-4">
                       {bookInfo.author}
                     </p>
                     <h2 className="text-xl text-[#032b41] font-light mb-4">
