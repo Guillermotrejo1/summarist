@@ -70,7 +70,7 @@ const Id = () => {
   return (
     <>
       <Layout>
-        <div className="w-full md:w-[calc(100%-200px)] md:ml-50 h-screen py-10">
+        <div className="md:w-[calc(100%-200px)] md:ml-60 h-screen py-10">
           <div className="max-w-[1070px] w-full mx-auto px-6">
             {isLoading ? (
               <>
