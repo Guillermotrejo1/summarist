@@ -133,14 +133,14 @@ const Id = () => {
               </>
             ) : (
               bookInfo && (
-                <div className="flex flex-col md:flex-row-reverse">
-                  <div className="flex items-center justify-center md:block mb-6 md:h-screen md:w-lg md:ml-8">
+                <div className="flex flex-col lg:flex-row-reverse">
+                  <div className="flex items-center justify-center md:block mb-6 md:w-lg md:ml-8">
                     <Image
                       src={bookInfo.imageLink}
                       width={300}
                       height={300}
                       alt=""
-                      className="w-[300px] h-[300px] object-contain"
+                      className="mx-auto w-[300px] h-[300px] object-contain"
                     />
                   </div>
                   <div className="w-full">
@@ -153,7 +153,7 @@ const Id = () => {
                     <p className="font-bold text-sm md:text-lg text-[#032b41] mb-4">
                       {bookInfo.author}
                     </p>
-                    <h2 className="text-xl text-[#032b41] font-light mb-4">
+                    <h2 className=" text-lg md:text-xl text-[#032b41] font-light mb-4">
                       {bookInfo.subTitle}
                     </h2>
                     <div className="border-t border-b border-[#e1e7ea] mb-4">
