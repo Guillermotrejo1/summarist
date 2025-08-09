@@ -13,7 +13,7 @@ const TrackInfo = ({ title, author, imageLink }: TrackInfoProps) => {
       <figure>
         {imageLink ? ( // Use the passed imageLink
           <Image
-            className=""
+            className="w-full"
             src={imageLink}
             alt={title || "Book cover"} // Add a descriptive alt text
             width={50}

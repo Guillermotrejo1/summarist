@@ -93,7 +93,7 @@ const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) 
       <div className="h-45 md:h-20 bg-[#042330] flex flex-col md:gap-15 md:flex-row justify-between items-center text-white p-[0.5rem_10px]">
         {/* Pass props to TrackInfo */}
         <TrackInfo title={title} author={author} imageLink={imageLink} />
-        <div className="w-full flex justify-center items-center gap-1 m-auto flex-1 md:ml-32 flex-col md:flex-row">
+        <div className="w-full flex justify-center items-center gap-1 m-auto flex-1 flex-col md:flex-row">
           {/* Pass props and functions to Controls */}
           <Controls
             isPlaying={isPlaying}
