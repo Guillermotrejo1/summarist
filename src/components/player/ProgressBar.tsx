@@ -43,7 +43,7 @@ export const ProgressBar = ({
   };
 
   return (
-    <div className="flex items-center justify-center md:ml-32 w-full md:w-1/3 mt-2 md:mt-0">
+    <div className="flex items-center justify-center w-full sm:w-lg md:w-[30%] mt-2 md:mt-0 mx-auto">
       <span className="mr-2">{formatTime(currentTime)}</span>
       <input
         className="max-w-[80%] bg-gray-300"

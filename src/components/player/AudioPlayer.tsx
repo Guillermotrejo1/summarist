@@ -90,7 +90,7 @@ const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) 
 
   return (
     <div className="sticky bottom-0 left-0 w-full z-50">
-      <div className="h-45 md:h-20 bg-[#042330] flex flex-col md:gap-15 md:flex-row justify-between items-center text-white p-[0.5rem_10px]">
+      <div className="h-45 md:h-20 bg-[#042330] flex flex-col md:gap-15 md:flex-row justify-between text-white p-[0.5rem_10px]">
         {/* Pass props to TrackInfo */}
         <TrackInfo title={title} author={author} imageLink={imageLink} />
         <div className="w-full flex justify-center items-center gap-1 m-auto flex-1 flex-col md:flex-row">
@@ -102,12 +102,12 @@ const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) 
             skipBackward={skipBackward}
           />
           {/* ProgressBar props are already correctly set up */}
+        </div>
           <ProgressBar
             currentTime={currentTime}
             duration={duration}
             onSeek={onSeek}
           />
-        </div>
         <div className="flex items-center gap-2 text-gray-400"></div>
       </div>
       {/* The single audio element */}

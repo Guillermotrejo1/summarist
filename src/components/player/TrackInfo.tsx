@@ -9,15 +9,15 @@ interface TrackInfoProps {
 
 const TrackInfo = ({ title, author, imageLink }: TrackInfoProps) => {
   return (
-    <div className="flex mt-2 md:mt-0">
+    <div className="flex mt-2 ml-4 justify-center">
       <figure>
         {imageLink ? ( // Use the passed imageLink
           <Image
             className="w-full"
             src={imageLink}
             alt={title || "Book cover"} // Add a descriptive alt text
-            width={50}
-            height={50}
+            width={40}
+            height={40}
           />
         ) : (
           <div className="fallback-image" style={{ width: "50px", height: "50px", background: "#ccc" }}>No Image</div>
