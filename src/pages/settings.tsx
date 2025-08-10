@@ -88,7 +88,7 @@ const Settings = () => {
                 </div>
                 <div className="mb-[32px]">
                   <h3 className="text-lg text-[#032b41] font-bold">Email</h3>
-                  <p>gtrejo@gmail.com</p>
+                  <p>user@gmail.com</p>
                   <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
                 </div>
               </>
@@ -105,7 +105,7 @@ const Settings = () => {
 
                 <div className="mb-[32px]">
                   <h3 className="text-lg text-[#032b41] font-bold">Email</h3>
-                  <p>gtrejo@gmail.com</p>
+                  <p>user@gmail.com</p>
                   <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
                 </div>
               </>

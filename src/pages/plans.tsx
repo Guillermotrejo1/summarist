@@ -132,7 +132,7 @@ const Plans = () => {
             </div>
             <div className="flex flex-col items-center mx-auto my-10 sticky bottom-0 z-[1] p-8 bg-white">
               <button className="btn max-w-[300px] mb-2">
-                7 Day free trial
+                {activePlan ? "7 Day free trial" : "Start your first month"}
               </button>
               <div className="text-[#6b757b] text-xs items-center">
                 Cancel your trial at any time before it ends, and you wont be
