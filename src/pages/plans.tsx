@@ -9,13 +9,24 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { getCheckoutUrl } from "@/account/stripePayment";
+import { app } from "@/firebase/firebase";
+import { useRouter } from "next/navigation";
 
 const Plans = () => {
   const [activePlan, setActivePlan] = useState<string | null>(null);
+  const router = useRouter()
 
   const handlePlanSelect = (plan: string) => {
     setActivePlan(plan);
   };
+
+  const handleSubscription = async () => {
+    const priceId = "price_1RuaR0B9FSah5Z4dnAmDQQH3"
+    const checkoutUrl = await getCheckoutUrl(app, priceId)
+    router.push(checkoutUrl)
+    console.log("upgrade to premium")
+  }
 
   return (
     <div className="w-full transition-all slide-in-left duration-100">
@@ -131,7 +142,7 @@ const Plans = () => {
               </div>
             </div>
             <div className="flex flex-col items-center mx-auto my-10 sticky bottom-0 z-[1] p-8 bg-white">
-              <button className="btn max-w-[300px] mb-2">
+              <button className="btn max-w-[300px] mb-2" onClick={handleSubscription}>
                 {activePlan ? "7 Day free trial" : "Start your first month"}
               </button>
               <div className="text-[#6b757b] text-xs items-center">
