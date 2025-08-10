@@ -5,11 +5,17 @@ import Login from "../assets/login.png";
 import { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import { useRouter } from "next/router";
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+const db = getFirestore();
+const auth = getAuth();
 
 const Settings = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isPremium, setIsPremium] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const subscriptionPlan = isPremium ? "Premium" : "Basic";
+
   const router = useRouter();
 
   useEffect(() => {
@@ -22,6 +28,26 @@ const Settings = () => {
   const subscriptionClick = () => {
     router.push("/plans")
   }
+
+  useEffect(() => {
+    const checkSubscription = async () => {
+      if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const userRef = doc(db, "customers", userId);
+        const docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          if (userData.stripeSubscriptionStatus === "active") {
+            await updateDoc(userRef, { premium: true });
+            setIsPremium(true);
+          } else {
+            setIsPremium(false);
+          }
+        }
+      }
+    };
+    checkSubscription();
+  }, [auth.currentUser]);
 
   return (
     <>
@@ -83,12 +109,12 @@ const Settings = () => {
                   <h3 className="text-lg text-[#032b41] font-bold">
                     Your Subscription plan
                   </h3>
-                  <p>premium</p>
+                  <p>{subscriptionPlan}</p>
                   <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
                 </div>
                 <div className="mb-[32px]">
                   <h3 className="text-lg text-[#032b41] font-bold">Email</h3>
-                  <p>user@gmail.com</p>
+                  <p>{auth.currentUser?.email}</p>
                   <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
                 </div>
               </>
@@ -97,7 +123,7 @@ const Settings = () => {
                 <h3 className="text-lg text-[#032b41] font-bold mb-2">
                   Your Subscription plan
                 </h3>
-                <div className="mb-2">Basic</div>
+                <div className="mb-2">{subscriptionPlan}</div>
                 <button className="btn max-w-[200px] mb-6" onClick={subscriptionClick}>
                   Upgrade to Premium
                 </button>
@@ -105,7 +131,7 @@ const Settings = () => {
 
                 <div className="mb-[32px]">
                   <h3 className="text-lg text-[#032b41] font-bold">Email</h3>
-                  <p>user@gmail.com</p>
+                  <p>{auth.currentUser?.email}</p>
                   <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
                 </div>
               </>

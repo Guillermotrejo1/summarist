@@ -7,7 +7,7 @@ interface AudioPlayerProps {
   audioLink: string;
   title: string;
   author: string;
-  imageLink: string; // Add imageLink here for TrackInfo
+  imageLink: string;
 }
 
 const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) => {
@@ -19,7 +19,7 @@ const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.src = audioLink;
-      audioRef.current.load(); // Load the new audio source
+      audioRef.current.load();
 
       const handleTimeUpdate = () => {
         if (audioRef.current) {
@@ -33,7 +33,7 @@ const AudioPlayer = ({ audioLink, title, author, imageLink }: AudioPlayerProps) 
 
       const handleEnded = () => {
         setIsPlaying(false);
-        setCurrentTime(0); // Reset time when audio ends
+        setCurrentTime(0); 
       };
 
       audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
