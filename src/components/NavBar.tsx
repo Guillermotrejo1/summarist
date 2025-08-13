@@ -3,9 +3,11 @@ import logo from "../assets/logo.png";
 import LoginModal from "./LoginModal";
 import { useState } from "react";
 
+interface LoginModalProps {
+  onLogin: () => void;
+}
 
-
-const NavBar = () => {
+const NavBar: React.FC<LoginModalProps> = ({ onLogin }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -36,7 +38,7 @@ const NavBar = () => {
           >
             Login
           </li>
-          {isModalOpen && <LoginModal onClose={handleCloseModal} />}
+          {isModalOpen && <LoginModal onClose={handleCloseModal} onLogin={onLogin} />}
 
           <li className="cursor-not-allowed hidden md:block text-[#032b41]">
             About

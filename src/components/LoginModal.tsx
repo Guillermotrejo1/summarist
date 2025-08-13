@@ -6,6 +6,7 @@ import { IoPerson } from "react-icons/io5";
 import { auth } from "../firebase/firebase";
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
@@ -21,6 +22,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is logged in
+    console.log("User is logged in");
+  } else {
+    // User is not logged in
+    console.log("User is not logged in");
+  }
+});
 
   const handleGuestLogin = () => {
     setIsLoading(true);
