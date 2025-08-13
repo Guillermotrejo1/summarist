@@ -5,15 +5,9 @@ import Login from "../assets/login.png";
 import { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import { useRouter } from "next/router";
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  updateDoc,
-} from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import LoginModal from "@/components/LoginModal";
-
 
 interface LoginModalProps {
   onClose: () => void;
@@ -23,8 +17,9 @@ interface LoginModalProps {
 const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
   const [isPremium, setIsPremium] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const subscriptionPlan = isPremium ? "Premium" : "Basic";
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const db = getFirestore();
   const auth = getAuth();
   const router = useRouter();
@@ -40,30 +35,32 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
     router.push("/plans");
   };
 
- useEffect(() => {
-  const checkSubscription = async () => {
-    if (auth.currentUser) {
-      const userId = auth.currentUser.uid;
-      const userRef = doc(db, "customers", userId);
-      const docSnap = await getDoc(userRef);
-      if (docSnap.exists()) {
-        const userData = docSnap.data();
-        console.log("stripeSubscriptionStatus:", userData.stripeSubscriptionStatus);
-        console.log("premium:", userData.premium);
-        if (userData.stripeSubscriptionStatus === "active") {
-          await updateDoc(userRef, { premium: true });
-          setIsPremium(true);
-        } else if (userData.premium) {
-          setIsPremium(true);
-        } else {
-          setIsPremium(false);
+  useEffect(() => {
+    const checkSubscription = async () => {
+      if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const userRef = doc(db, "customers", userId);
+        const docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          console.log(
+            "stripeSubscriptionStatus:",
+            userData.stripeSubscriptionStatus
+          );
+          console.log("premium:", userData.premium);
+          if (userData.stripeSubscriptionStatus === "active") {
+            await updateDoc(userRef, { premium: true });
+            setIsPremium(true);
+          } else if (userData.premium) {
+            setIsPremium(true);
+          } else {
+            setIsPremium(false);
+          }
         }
       }
-    }
-  };
-  checkSubscription();
-}, [auth.currentUser]);
-  
+    };
+    checkSubscription();
+  }, [auth.currentUser]);
 
   useEffect(() => {
     const checkSubscription = async () => {
@@ -95,13 +92,22 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
     checkSubscription();
   }, [auth.currentUser]);
 
-  const handleOpenModal= () => {
-    setIsModalOpen(true)
-  }
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+    setIsLoading(false);
+  });
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
   const handleCloseModal = () => {
-  setIsModalOpen(false);
-};
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -156,7 +162,7 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
                 <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
               </div>
             </>
-          ) : auth.currentUser ? (
+          ) : isLoggedIn ? (
             isPremium ? (
               <>
                 <div className="mb-[32px]">
@@ -201,8 +207,15 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
               <p className="text-center text-[#032b41] text-2xl font-bold mb-4">
                 Login to your account to see your details
               </p>
-              <button className="btn max-w-[200px] mx-auto" onClick={handleOpenModal}>Login</button>
-              {isModalOpen && <LoginModal onClose={handleCloseModal} onLogin={onLogin}/>}
+              <button
+                className="btn max-w-[200px] mx-auto"
+                onClick={handleOpenModal}
+              >
+                Login
+              </button>
+              {isModalOpen && (
+                <LoginModal onClose={handleCloseModal} onLogin={onLogin} />
+              )}
             </>
           )}
         </div>
