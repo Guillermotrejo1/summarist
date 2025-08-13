@@ -3,6 +3,8 @@ import logo from "../assets/logo.png";
 import LoginModal from "./LoginModal";
 import { useState } from "react";
 
+
+
 const NavBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
