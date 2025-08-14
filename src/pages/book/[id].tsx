@@ -7,10 +7,9 @@ import { HiOutlineLightBulb } from "react-icons/hi";
 import {} from "react-icons/ai";
 import { BsBook, BsBookmark } from "react-icons/bs";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Skeleton from "@mui/material/Skeleton";
 import Layout from "@/components/Layout";
-import { useRouter } from "next/router";
 
 interface Book {
   id: string;
