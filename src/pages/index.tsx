@@ -9,8 +9,8 @@ import ReviewsSection from "@/components/ReviewsSection";
 export default function Home() {
   return (
     <>
-    <NavBar/>
-    <Landing />
+    <NavBar onLogin={() => { /* handle login here */ }} />
+    <Landing onLogin={() => { /* handle login here */ }} />
     <FeaturesSection />
     <ReviewsSection />
     <NumbersSection />
