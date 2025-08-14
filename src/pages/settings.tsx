@@ -9,12 +9,7 @@ import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import LoginModal from "@/components/LoginModal";
 
-interface LoginModalProps {
-  onClose: () => void;
-  onLogin: () => void;
-}
-
-const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
+const Settings = () => {
   const [isPremium, setIsPremium] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,81 +20,32 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
   const router = useRouter();
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setIsLoading(false);
-    }, 0);
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  const subscriptionClick = () => {
-    router.push("/plans");
-  };
-
-  useEffect(() => {
-    const checkSubscription = async () => {
-      if (auth.currentUser) {
-        const userId = auth.currentUser.uid;
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setIsLoggedIn(!!user); // Set login status based on user state
+      if (user) {
+        const userId = user.uid;
         const userRef = doc(db, "customers", userId);
-        const docSnap = await getDoc(userRef);
+        const docSnap = await getDoc(userRef); // Get user document from Firestore
         if (docSnap.exists()) {
           const userData = docSnap.data();
-          console.log(
-            "stripeSubscriptionStatus:",
-            userData.stripeSubscriptionStatus
-          );
-          console.log("premium:", userData.premium);
-          if (userData.stripeSubscriptionStatus === "active") {
+
+          // Check and update premium status
+          if (
+            userData.stripeSubscriptionStatus === "active" &&
+            !userData.premium
+          ) {
             await updateDoc(userRef, { premium: true });
             setIsPremium(true);
-          } else if (userData.premium) {
-            setIsPremium(true);
           } else {
-            setIsPremium(false);
+            setIsPremium(userData.premium);
           }
         }
       }
-    };
-    checkSubscription();
-  }, [auth.currentUser]);
+      setIsLoading(false);
+    });
 
-  useEffect(() => {
-    const checkSubscription = async () => {
-      if (auth.currentUser) {
-        const userId = auth.currentUser.uid;
-        const userRef = doc(db, "customers", userId);
-        const docSnap = await getDoc(userRef);
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-          console.log(
-            "stripeSubscriptionStatus:",
-            userData.stripeSubscriptionStatus
-          );
-          console.log("premium:", userData.premium);
-          if (
-            userData.stripeSubscriptionStatus &&
-            userData.stripeSubscriptionStatus === "active"
-          ) {
-            setIsPremium(true);
-          } else if (userData.premium) {
-            setIsPremium(true);
-          } else {
-            setIsPremium(false);
-          }
-        }
-      }
-    };
-
-    checkSubscription();
-  }, [auth.currentUser]);
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-    setIsLoading(false);
-  });
+    return () => unsubscribe();
+  }, [auth, db]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -186,12 +132,11 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
                 <div className="mb-2">{subscriptionPlan}</div>
                 <button
                   className="btn max-w-[200px] mb-6"
-                  onClick={subscriptionClick}
+                  onClick={() => router.push("/plans")}
                 >
                   Upgrade to Premium
                 </button>
                 <div className="border-b-[1px] border-[#e1e7ea] mb-4"></div>
-
                 <div className="mb-[32px]">
                   <h3 className="text-lg text-[#032b41] font-bold">Email</h3>
                   <p>{auth.currentUser?.email}</p>
@@ -202,7 +147,7 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
           ) : (
             <>
               <div className="flex justify-center align-center">
-                <Image src={Login} alt="" width={500} height={500} />
+                <Image src={Login} alt="Login" width={500} height={500} />
               </div>
               <p className="text-center text-[#032b41] text-2xl font-bold mb-4">
                 Login to your account to see your details
@@ -214,7 +159,7 @@ const Settings: React.FC<LoginModalProps> = ({ onLogin }) => {
                 Login
               </button>
               {isModalOpen && (
-                <LoginModal onClose={handleCloseModal} onLogin={onLogin} />
+                <LoginModal onClose={handleCloseModal} onLogin={() => {}} />
               )}
             </>
           )}
