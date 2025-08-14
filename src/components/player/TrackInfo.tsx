@@ -9,7 +9,7 @@ interface TrackInfoProps {
 
 const TrackInfo = ({ title, author, imageLink }: TrackInfoProps) => {
   return (
-    <div className="flex mt-2 ml-4 justify-center">
+    <div className="flex mt-2 ml-4 justify-center pr-4 mr-4">
       <figure>
         {imageLink ? ( // Use the passed imageLink
           <Image
