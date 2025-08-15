@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import Recommened from "@/components/Recommened";
+import Recommended from "@/components/Recommened";
 import Selected from "@/components/Selected";
 import Suggested from "@/components/Suggested";
 import React from "react";
@@ -13,7 +13,7 @@ const forYou = () => {
       <div className="py-10 w-full md:ml-30 h-auto">
         <div className="max-w-[1070px] w-full m-auto px-6">
           <Selected />
-          <Recommened />
+          <Recommended />
           <Suggested/>
         </div>
       </div>
