@@ -5,7 +5,7 @@ import Suggested from "@/components/Suggested";
 import React from "react";
 
 
-const forYou = () => {
+const ForYou = () => {
   
   return (
     <Layout>
@@ -24,4 +24,4 @@ const forYou = () => {
 
 
 
-export default forYou;
+export default ForYou;
