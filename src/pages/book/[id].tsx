@@ -7,9 +7,9 @@ import { HiOutlineLightBulb } from "react-icons/hi";
 import {} from "react-icons/ai";
 import { BsBook, BsBookmark } from "react-icons/bs";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
 import Skeleton from "@mui/material/Skeleton";
 import Layout from "@/components/Layout";
+import { useRouter } from "next/router";
 
 interface Book {
   id: string;
@@ -33,9 +33,9 @@ interface Book {
 const Id = () => {
   const [bookInfo, setBookInfo] = useState<Book>();
   const [isLoading, setIsLoading] = useState(true);
-  const params = useParams();
-  const id = params?.id;
   const router = useRouter();
+  const {id} = router.query;
+  console.log("Current ID:", id);  // Check if the ID is printed correctly
 
   const handleReadOrListen = () => {
     if (bookInfo?.subscriptionRequired) {
