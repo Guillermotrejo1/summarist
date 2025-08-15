@@ -231,4 +231,33 @@ const Id = () => {
   );
 };
 
+import { GetServerSidePropsContext } from "next";
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const id = context.params && typeof context.params.id === "string" ? context.params.id : null;
+  if (!id) {
+    return {
+      props: {
+        bookInfo: null,
+      },
+    };
+  }
+  try {
+    const response = await axios.get(
+      `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
+    );
+    return {
+      props: {
+        bookInfo: response.data,
+      },
+    };
+  } catch {
+    return {
+      props: {
+        bookInfo: null,
+      },
+    };
+  }
+}
+
 export default Id;
