@@ -1,5 +1,4 @@
 import Image from "next/image";
-import landing from "../../public/assets/landing.png";
 import LoginModal from "./LoginModal";
 import { useState } from "react";
 
