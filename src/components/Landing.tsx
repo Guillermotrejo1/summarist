@@ -1,5 +1,5 @@
 import Image from "next/image";
-import landing from "@/assets/landing.png";
+import landing from "../../public/assets/landing.png";
 import LoginModal from "./LoginModal";
 import { useState } from "react";
 
@@ -43,7 +43,7 @@ const Landing: React.FC<LoginModalProps> = ({ onLogin }) => {
             </div>
             <figure className="hidden w-full h-full max-w-[400px] md:block">
               <Image
-                src={landing}
+                src="/assets/landing.png"
                 width={200}
                 height={200}
                 alt="landing"

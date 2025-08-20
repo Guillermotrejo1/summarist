@@ -1,5 +1,4 @@
 import Image from "next/image";
-import logo from "../assets/logo.png";
 import LoginModal from "./LoginModal";
 import { useState } from "react";
 
@@ -23,7 +22,7 @@ const NavBar: React.FC<LoginModalProps> = ({ onLogin }) => {
       <div className="flex justify-between items-center max-w-[1070px] w-full h-full mx-auto px-4">
         <div className="flex justify-center items-center">
           <Image
-            src={logo}
+            src="/assets/logo.png"
             width={200}
             height={80}
             className="max-w-[200px] h-auto object-contain"
