@@ -1,5 +1,4 @@
 import Image from "next/image";
-import PricingTop from "../assets/pricing-top.png";
 import { FaFileAlt } from "react-icons/fa";
 import { RiPlantFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa";
@@ -41,7 +40,7 @@ const Plans = () => {
           <figure className="flex items-center justify-center">
             <Image
               className="rounded-t-[180px]"
-              src={PricingTop}
+              src="/assets/pricing-top.png"
               alt=""
               width={350}
               height={350}

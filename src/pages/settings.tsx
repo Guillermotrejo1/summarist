@@ -1,7 +1,6 @@
 import SearchBar from "@/components/SearchBar";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
-import Login from "../assets/login.png";
 import { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import { useRouter } from "next/router";
@@ -147,7 +146,7 @@ const Settings = () => {
           ) : (
             <>
               <div className="flex justify-center align-center">
-                <Image src={Login} alt="Login" width={500} height={500} />
+                <Image src="/assets/login.png" alt="Login" width={500} height={500} />
               </div>
               <p className="text-center text-[#032b41] text-2xl font-bold mb-4">
                 Login to your account to see your details

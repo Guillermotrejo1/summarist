@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Logo from "../assets/logo.png";
 import Link from "next/link";
 import { PiHouseLine } from "react-icons/pi";
 import { RxBookmark } from "react-icons/rx";
@@ -97,7 +96,7 @@ const Sidebar = () => {
       >
         <div>
           <Image
-            src={Logo}
+            src="/assets/logo.png"
             className="flex justify-center items-center pt-4 max-w-[160px] m-auto"
             width={160}
             height={60}
