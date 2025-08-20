@@ -94,7 +94,7 @@ const Sidebar = () => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 md:block`}
       >
-        <div className="">
+        <div>
           <Image
             src="/assets/logo.png"
             className="flex justify-center items-center pt-4 max-w-[160px] m-auto"
