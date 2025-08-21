@@ -57,7 +57,7 @@ const SearchBar = () => {
 
   return (
     <div className="bg-[#fff] border-b-[1px] border-[#e1e7ea] w-full md:ml-[200px] h-20 md:h-20 z-[1]">
-      <div className="w-[50%] max-w-80 absolute right-20 md:right-5 lg:right-45 top-5">
+      <div className="sm:w-[60%] md:w-full lg:w-full max-w-80 absolute right-20 md:right-5 lg:right-45 top-5">
         <div className="relative">
           <input
             type="text"
