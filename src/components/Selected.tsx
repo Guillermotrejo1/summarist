@@ -41,7 +41,7 @@ const Selected = ({ book, isLoading }: SelectedProps) => (
         href={`book/${book.id}`}
         className="flex bg-[#fbefd6] p-6 mb-6 rounded-[4px] gap-6 md:max-w-2xl h-auto"
       >
-        <div className="flex flex-col md:flex-row w-[60%] md:w-full">
+        <div className="flex flex-col md:flex-row w-[70%] md:w-full">
           <h2 className="leading-5 mb-2 md:mb-0">{book.subTitle}</h2>
           <div className="w-[1px] bg-[#bac8ce] mr-10 h-38 hidden md:block"></div>
           <div>
