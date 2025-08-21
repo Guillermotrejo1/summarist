@@ -88,7 +88,7 @@ const Sidebar = () => {
 
       <div
         ref={sidebarRef}
-        className={`bg-[#f7faf9] fixed h-screen top-0 left-0 z-50 transition duration-300 ease-in-out ${
+        className={`bg-[#f7faf9] fixed h-full top-0 left-0 z-50 transition duration-300 ease-in-out ${
           isOpen ? "w-[80%]" : "w-50"
         } min-w-50 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
