@@ -19,11 +19,13 @@ const Plans = () => {
   };
 
   const handleSubscription = async () => {
-    const priceId = "price_1RuaR0B9FSah5Z4dnAmDQQH3"
-    const checkoutUrl = await getCheckoutUrl(app, priceId)
+  const priceId = "price_1RuaR0B9FSah5Z4dnAmDQQH3";
+  const checkoutUrl = await getCheckoutUrl(app, priceId);
+  setTimeout(() => {
     window.location.href = checkoutUrl;
-    console.log("upgrade to premium")
-  }
+  }, 100);
+  
+};
 
   return (
     <div className="w-full transition-all slide-in-left duration-100">
