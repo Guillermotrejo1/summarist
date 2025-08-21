@@ -130,7 +130,7 @@ const Settings = () => {
                 </h3>
                 <div className="mb-2">{subscriptionPlan}</div>
                 <button
-                  className="btn max-w-[200px] mb-6"
+                  className="btn max-w-[200px] mb-6 active:scale-95"
                   onClick={() => router.push("/plans")}
                 >
                   Upgrade to Premium

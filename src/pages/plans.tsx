@@ -141,7 +141,7 @@ const Plans = () => {
               </div>
             </div>
             <div className="flex flex-col items-center mx-auto my-10 sticky bottom-0 z-[1] p-8 bg-white">
-              <button className="btn max-w-[300px] mb-2" onClick={handleSubscription}>
+              <button className="btn max-w-[300px] mb-2 active:scale-95" onClick={handleSubscription}>
                 {activePlan === "yearly" ? "Start your 7-day free trial" : activePlan === "monthly" ? "Start your first month" : "Select a plan"}
               </button>
               <div className="text-[#6b757b] text-xs items-center">
