@@ -10,11 +10,9 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { getCheckoutUrl } from "@/account/stripePayment";
 import { app } from "@/firebase/firebase";
-import { useRouter } from "next/navigation";
 
 const Plans = () => {
   const [activePlan, setActivePlan] = useState<string | null>("yearly");
-  const router = useRouter()
 
   const handlePlanSelect = (plan: string) => {
     setActivePlan(plan);
@@ -23,7 +21,7 @@ const Plans = () => {
   const handleSubscription = async () => {
     const priceId = "price_1RuaR0B9FSah5Z4dnAmDQQH3"
     const checkoutUrl = await getCheckoutUrl(app, priceId)
-    router.push(checkoutUrl)
+    window.location.href = checkoutUrl;
     console.log("upgrade to premium")
   }
 
