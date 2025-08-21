@@ -13,7 +13,7 @@ import { app } from "@/firebase/firebase";
 import { useRouter } from "next/navigation";
 
 const Plans = () => {
-  const [activePlan, setActivePlan] = useState<string | null>(null);
+  const [activePlan, setActivePlan] = useState<string | null>("yearly");
   const router = useRouter()
 
   const handlePlanSelect = (plan: string) => {
@@ -142,7 +142,7 @@ const Plans = () => {
             </div>
             <div className="flex flex-col items-center mx-auto my-10 sticky bottom-0 z-[1] p-8 bg-white">
               <button className="btn max-w-[300px] mb-2" onClick={handleSubscription}>
-                {activePlan ? "7 Day free trial" : "Start your first month"}
+                {activePlan === "yearly" ? "Start your 7-day free trial" : activePlan === "monthly" ? "Start your first month" : "Select a plan"}
               </button>
               <div className="text-[#6b757b] text-xs items-center">
                 Cancel your trial at any time before it ends, and you wont be
