@@ -18,13 +18,13 @@ const Plans = () => {
     setActivePlan(plan);
   };
 
-  const handleSubscription = async () => {
+ const handleSubscription = async () => {
   const priceId = "price_1RuaR0B9FSah5Z4dnAmDQQH3";
   const checkoutUrl = await getCheckoutUrl(app, priceId);
-  setTimeout(() => {
-    window.location.href = checkoutUrl;
-  }, 100);
-  
+  const link = document.createElement('a');
+  link.href = checkoutUrl;
+  link.target = '_self';
+  link.click();
 };
 
   return (
