@@ -20,31 +20,32 @@ const Settings = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setIsLoggedIn(!!user); // Set login status based on user state
-      if (user) {
-        const userId = user.uid;
-        const userRef = doc(db, "customers", userId);
-        const docSnap = await getDoc(userRef); // Get user document from Firestore
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-
-          // Check and update premium status
-          if (
-            userData.stripeSubscriptionStatus === "active" &&
-            !userData.premium
-          ) {
-            await updateDoc(userRef, { premium: true });
-            setIsPremium(true);
-          } else {
-            setIsPremium(userData.premium);
-          }
+        setIsLoggedIn(!!user); // Set login status based on user state
+        if (user) {
+            const userId = user.uid;
+            const userRef = doc(db, "customers", userId);
+            try {
+                const docSnap = await getDoc(userRef); // Get user document from Firestore
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    // Check and update premium status
+                    if (userData.stripeSubscriptionStatus === "active" && !userData.premium) {
+                        await updateDoc(userRef, { premium: true });
+                        setIsPremium(true);
+                    } else {
+                        setIsPremium(userData.premium);
+                    }
+                } else {
+                    console.error("No such document!");
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
         }
-      }
-      setIsLoading(false);
+        setIsLoading(false);
     });
-
     return () => unsubscribe();
-  }, [auth, db]);
+}, [auth, db]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

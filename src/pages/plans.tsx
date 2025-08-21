@@ -10,24 +10,22 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { getCheckoutUrl } from "@/account/stripePayment";
 import { app } from "@/firebase/firebase";
+import { useRouter } from "next/navigation";
 
 const Plans = () => {
   const [activePlan, setActivePlan] = useState<string | null>("yearly");
+  const router = useRouter()
 
   const handlePlanSelect = (plan: string) => {
     setActivePlan(plan);
   };
 
-const handleSubscription = async () => {
-  const priceId = "price_1RuaR0B9FSah5Z4dnAmDQQH3";
-  const checkoutUrl = await getCheckoutUrl(app, priceId);
-  const a = document.createElement('a');
-  a.href = checkoutUrl;
-  a.target = '_blank';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-};
+  const handleSubscription = async () => {
+    const priceId = "price_1RuaR0B9FSah5Z4dnAmDQQH3"
+    const checkoutUrl = await getCheckoutUrl(app, priceId)
+    router.push(checkoutUrl)
+    console.log("upgrade to premium")
+  }
 
   return (
     <div className="w-full transition-all slide-in-left duration-100">
