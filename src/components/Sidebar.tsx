@@ -17,9 +17,10 @@ import { onAuthStateChanged } from "firebase/auth";
 
 interface SidebarProps {
   onFontSizeChange: (size: string) => void; // Specify the type for the function
+  handleGuestLoginUpdate: (isGuestLoggedIn: boolean) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange, handleGuestLoginUpdate }) => {
   const router = useRouter();
   const isPlayerRoute = router.pathname.startsWith("/player");
   const [isOpen, setIsOpen] = useState(false);
@@ -74,6 +75,15 @@ const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
   const closeLoginModal = () => {
     setIsModalOpen(false);
   };
+
+   const handleGuestLogin = () => {
+  setTimeout(() => {
+    if (handleGuestLoginUpdate) {
+      handleGuestLoginUpdate(true);
+    }
+    router.push("/forYou");
+  }, 3000);
+};
 
   return (
     <div className="h-0">
@@ -248,6 +258,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
           <LoginModal
             onClose={closeLoginModal}
             onLogin={() => setIsLoggedIn(true)}
+          handleGuestLoginUpdate={handleGuestLogin}
           />
         </div>
       )}

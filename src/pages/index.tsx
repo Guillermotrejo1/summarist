@@ -7,10 +7,15 @@ import ReviewsSection from "@/components/ReviewsSection";
 
 
 export default function Home() {
+
+  const handleGuestLogin = () => {
+  // void function
+ };
+  
   return (
     <>
-    <NavBar onLogin={() => { /* handle login here */ }} />
-    <Landing onLogin={() => { /* handle login here */ }} />
+    <NavBar onLogin={() => { /* handle login here */ }} handleGuestLoginUpdate={handleGuestLogin}/>
+    <Landing onLogin={() => { /* handle login here */ }} handleGuestLoginUpdate={handleGuestLogin} />
     <FeaturesSection />
     <ReviewsSection />
     <NumbersSection />

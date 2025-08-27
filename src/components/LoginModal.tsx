@@ -13,9 +13,10 @@ import {
 interface LoginModalProps {
   onClose: () => void;
   onLogin: () => void;
+  handleGuestLoginUpdate: (isGuestLoggedIn: boolean) => void;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
+const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin, handleGuestLoginUpdate }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -34,11 +35,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
 });
 
   const handleGuestLogin = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      router.push("/forYou");
-    }, 3000);
-  };
+  setIsLoading(true);
+  setTimeout(() => {
+    if (handleGuestLoginUpdate) {
+      handleGuestLoginUpdate(true);
+    }
+    router.push("/forYou");
+  }, 3000);
+};
 
   const register = async () => {
     setErrorMessage("");

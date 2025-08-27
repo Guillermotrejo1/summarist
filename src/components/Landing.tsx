@@ -5,9 +5,10 @@ import { useState } from "react";
 
 interface LoginModalProps {
   onLogin: () => void;
+  handleGuestLoginUpdate: (isGuestLoggedIn: boolean) => void;
 }
 
-const Landing: React.FC<LoginModalProps> = ({ onLogin }) => {
+const Landing: React.FC<LoginModalProps> = ({ onLogin, handleGuestLoginUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -17,6 +18,16 @@ const Landing: React.FC<LoginModalProps> = ({ onLogin }) => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  
+  const handleGuestLogin = () => {
+  setTimeout(() => {
+    if (handleGuestLoginUpdate) {
+      handleGuestLoginUpdate(true);
+    }
+  }, 3000);
+};
+  
 
   return (
     <section id="landing">
@@ -38,7 +49,7 @@ const Landing: React.FC<LoginModalProps> = ({ onLogin }) => {
               <button className="btn max-w-[300px] flex items-center mx-auto md:mx-0" onClick={handleOpenModal}>
                 Login
               </button>
-              {isModalOpen && <LoginModal onClose={handleCloseModal} onLogin={onLogin}/>}
+              {isModalOpen && <LoginModal onClose={handleCloseModal} onLogin={onLogin} handleGuestLoginUpdate={handleGuestLogin}/>}
             </div>
             <figure className="hidden w-full h-full max-w-[400px] md:block">
               <Image

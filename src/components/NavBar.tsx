@@ -4,9 +4,10 @@ import { useState } from "react";
 
 interface LoginModalProps {
   onLogin: () => void;
+  handleGuestLoginUpdate: (isGuestLoggedIn: boolean) => void;
 }
 
-const NavBar: React.FC<LoginModalProps> = ({ onLogin }) => {
+const NavBar: React.FC<LoginModalProps> = ({ onLogin, handleGuestLoginUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -16,6 +17,14 @@ const NavBar: React.FC<LoginModalProps> = ({ onLogin }) => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+    const handleGuestLogin = () => {
+  setTimeout(() => {
+    if (handleGuestLoginUpdate) {
+      handleGuestLoginUpdate(true);
+    }
+  }, 3000);
+};
 
   return (
     <nav className="h-[80px] flex justify-center">
@@ -37,7 +46,7 @@ const NavBar: React.FC<LoginModalProps> = ({ onLogin }) => {
           >
             Login
           </li>
-          {isModalOpen && <LoginModal onClose={handleCloseModal} onLogin={onLogin} />}
+          {isModalOpen && <LoginModal onClose={handleCloseModal} onLogin={onLogin} handleGuestLoginUpdate={handleGuestLogin} />}
 
           <li className="cursor-not-allowed hidden md:block text-[#032b41]">
             About

@@ -26,14 +26,19 @@ interface Book {
   authorDescription: string;
 }
 
+interface IdProps {
+  handleGuestLoginUpdate: (isGuestLoggedIn: boolean) => void;
+}
 
 
-const Id = () => {
+
+const Id: React.FC<IdProps> = ({handleGuestLoginUpdate}) => {
   const [bookInfo, setBookInfo] = useState<Book | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
    const [fontSize, setFontSize] = useState("text-xl"); // Default font size
   const params = useParams();
   const id = params?.id;
+  
   
 
   useEffect(() => {
@@ -62,10 +67,18 @@ const Id = () => {
     setFontSize(size);
   };
 
+   const handleGuestLogin = () => {
+  setTimeout(() => {
+    if (handleGuestLoginUpdate) {
+      handleGuestLoginUpdate(true);
+    }
+  }, 3000);
+};
+
   return (
     <>
       <Layout onFontSizeChange={handleFontSizeChange}>
-        <Sidebar onFontSizeChange={handleFontSizeChange} /> {/* Pass the function to Sidebar */}
+        <Sidebar onFontSizeChange={handleFontSizeChange} handleGuestLoginUpdate={handleGuestLogin} /> {/* Pass the function to Sidebar */}
         <div className="md:w-[calc(100%-200px)] md:ml-[200px] px-6 pt-6">
           {isLoading ? (
             <>
