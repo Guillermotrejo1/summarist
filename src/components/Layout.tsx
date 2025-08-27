@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;
-  onFontSizeChange: (size: string) => void; // Add the prop type here
+  onFontSizeChange: (size: string) => void;
 }
 
 const Layout = ({ children, onFontSizeChange }: LayoutProps)  => {

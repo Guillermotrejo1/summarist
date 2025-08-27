@@ -54,10 +54,15 @@ const Settings = () => {
     setIsModalOpen(false);
   };
 
+    // Function to change font size
+  const handleFontSizeChange = (size: string) => {
+    console.log(`Font size changed to: ${size}`);
+  };
+
   return (
     <>
       <SearchBar />
-      <Sidebar />
+      <Sidebar onFontSizeChange={handleFontSizeChange}  />
       <div className="py-10 md:ml-64 transition-all slide-in-right duration-100">
         <div className="max-w-[1070px] w-full mx-auto px-6">
           <div className="mb-[32px]">

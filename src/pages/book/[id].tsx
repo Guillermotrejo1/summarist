@@ -33,6 +33,7 @@ interface Book {
 const Id = () => {
   const [bookInfo, setBookInfo] = useState<Book>();
   const [isLoading, setIsLoading] = useState(true);
+  const [, setFontSize] = useState("text-xl"); // Ignoring the current fontSize
   const router = useRouter();
   const {id} = router.query;
   console.log("Current ID:", id);  // Check if the ID is printed correctly
@@ -66,9 +67,14 @@ const Id = () => {
     fetchData();
   }, [id]);
 
+   // Function to change font size
+  const handleFontSizeChange = (size: string) => {
+    setFontSize(size);
+  };
+
   return (
     <>
-      <Layout>
+      <Layout onFontSizeChange={handleFontSizeChange}>
         <div className="md:w-[calc(100%-200px)] md:ml-60 lg:ml-50 h-screen py-10">
           <div className="max-w-[1070px] w-full mx-auto px-6">
             {isLoading ? (
