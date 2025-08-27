@@ -156,7 +156,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
                   }}
                   style={{
                     borderBottom:
-                      activeFontSize === "text-xl" ? "2px solid green" : "none",
+                      activeFontSize === "text-xl" ? "3px solid #2bd97c" : "none",
                   }}
                   className="cursor-pointer text-xl"
                 >
@@ -170,7 +170,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
                   style={{
                     borderBottom:
                       activeFontSize === "text-2xl"
-                        ? "2px solid green"
+                        ? "3px solid #2bd97c"
                         : "none",
                   }}
                   className="cursor-pointer text-2xl"
@@ -185,7 +185,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
                   style={{
                     borderBottom:
                       activeFontSize === "text-[28px]"
-                        ? "2px solid green"
+                        ? "3px solid #2bd97c"
                         : "none",
                   }}
                   className="cursor-pointer text-[28px]"
@@ -200,7 +200,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
                   style={{
                     borderBottom:
                       activeFontSize === "text-3xl"
-                        ? "2px solid green"
+                        ? "3px solid #2bd97c"
                         : "none",
                   }}
                   className="cursor-pointer text-3xl"
