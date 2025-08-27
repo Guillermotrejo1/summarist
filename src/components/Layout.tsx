@@ -4,12 +4,14 @@ import { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;
+  onFontSizeChange: (size: string) => void; // Add the prop type here
 }
-const Layout = ({ children }: LayoutProps) => {
+
+const Layout = ({ children, onFontSizeChange }: LayoutProps)  => {
   return (
     <>
       <SearchBar />
-      <Sidebar />
+      <Sidebar onFontSizeChange={onFontSizeChange} />
       {children}
     </>
   );

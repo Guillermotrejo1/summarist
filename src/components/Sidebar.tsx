@@ -15,7 +15,11 @@ import { auth } from "@/firebase/firebase";
 import LoginModal from "./LoginModal";
 import { onAuthStateChanged } from "firebase/auth";
 
-const Sidebar = () => {
+interface SidebarProps {
+  onFontSizeChange: (size: string) => void; // Specify the type for the function
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ onFontSizeChange }) => {
     const router = useRouter();
     const isPlayerRoute = router.pathname.startsWith("/player");
     const [isOpen, setIsOpen] = useState(false);
@@ -103,10 +107,10 @@ const Sidebar = () => {
                         </div>
                         {isPlayerRoute && (
                             <div className="flex gap-4 items-center justify-center">
-                                <button className="cursor-pointer text-xl"><PiTextAa /></button>
-                                <button className="cursor-pointer text-2xl"><PiTextAa /></button>
-                                <button className="cursor-pointer text-[28px]"><PiTextAa /></button>
-                                <button className="cursor-pointer text-3xl"><PiTextAa /></button>
+                                <button onClick={() => onFontSizeChange("text-xl")} className="cursor-pointer text-xl"><PiTextAa /></button>
+                                <button onClick={() => onFontSizeChange("text-2xl")} className="cursor-pointer text-2xl"><PiTextAa /></button>
+                                <button onClick={() => onFontSizeChange("text-[28px]")} className="cursor-pointer text-[28px]"><PiTextAa /></button>
+                                <button onClick={() => onFontSizeChange("text-3xl")} className="cursor-pointer text-3xl"><PiTextAa /></button>
                             </div>
                         )}
                     </div>

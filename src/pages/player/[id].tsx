@@ -5,6 +5,7 @@ import AudioPlayer from "@/components/player/AudioPlayer";
 import { ImSpinner8 } from "react-icons/im";
 import Skeleton from "@mui/material/Skeleton";
 import Layout from "@/components/Layout";
+import Sidebar from "@/components/Sidebar";
 
 interface Book {
   id: string;
@@ -25,11 +26,15 @@ interface Book {
   authorDescription: string;
 }
 
+
+
 const Id = () => {
   const [bookInfo, setBookInfo] = useState<Book | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
+   const [fontSize, setFontSize] = useState("text-xl"); // Default font size
   const params = useParams();
   const id = params?.id;
+  
 
   useEffect(() => {
     if (!id) return;
@@ -52,9 +57,15 @@ const Id = () => {
     fetchData();
   }, [id]);
 
+    // Function to change font size
+  const handleFontSizeChange = (size:string) => {
+    setFontSize(size);
+  };
+
   return (
     <>
-      <Layout>
+      <Layout onFontSizeChange={handleFontSizeChange}>
+        <Sidebar onFontSizeChange={handleFontSizeChange} /> {/* Pass the function to Sidebar */}
         <div className="md:w-[calc(100%-200px)] md:ml-[200px] px-6 pt-6">
           {isLoading ? (
             <>
@@ -67,7 +78,7 @@ const Id = () => {
               <div className="text-xl md:text-2xl text-[#032b41] border-b border-[#e1e7ea] mb-4 p-2 md:mb-8 md:p-4 w-full">
                 <strong>{bookInfo?.title}</strong>
               </div>
-              <div className="whitespace-pre-line">{bookInfo?.summary}</div>
+              <div className={`whitespace-pre-line ${fontSize}`}>{bookInfo?.summary}</div>
             </div>
           )}
         </div>
