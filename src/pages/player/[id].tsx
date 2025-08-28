@@ -78,7 +78,7 @@ const Id: React.FC<IdProps> = ({handleGuestLoginUpdate}) => {
   return (
     <>
       <Layout onFontSizeChange={handleFontSizeChange} handleGuestLoginUpdate={handleGuestLogin}>
-        <Sidebar onFontSizeChange={handleFontSizeChange} handleGuestLoginUpdate={handleGuestLogin} /> {/* Pass the function to Sidebar */}
+        <Sidebar onFontSizeChange={handleFontSizeChange} handleGuestLoginUpdate={handleGuestLogin} /> 
         <div className="md:w-[calc(100%-200px)] md:ml-[200px] px-6 pt-6">
           {isLoading ? (
             <>

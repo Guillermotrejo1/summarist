@@ -16,7 +16,7 @@ import LoginModal from "./LoginModal";
 import { onAuthStateChanged } from "firebase/auth";
 
 interface SidebarProps {
-  onFontSizeChange: (size: string) => void; // Specify the type for the function
+  onFontSizeChange: (size: string) => void; 
   handleGuestLoginUpdate: (isGuestLoggedIn: boolean) => void;
 }
 
