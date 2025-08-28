@@ -1,8 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,3 +15,17 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// Stripe configuration (server-side only)
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY; 
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY; 
+
+// (server-side)
+export const getStripeSecretKey = () => {
+  return stripeSecretKey; 
+};
+
+// (client-side)
+export const getStripePublishableKey = () => {
+  return stripePublishableKey; 
+};
