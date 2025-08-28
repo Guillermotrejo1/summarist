@@ -12,7 +12,7 @@ const Settings = () => {
   const [isPremium, setIsPremium] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isGuestLoggedIn, setIsGuestLoggedIn] = useState(false);
+  const [, setIsGuestLoggedIn] = useState(false);
   const subscriptionPlan = isPremium ? "Premium" : "Basic";
   const [isModalOpen, setIsModalOpen] = useState(false);
   const db = getFirestore();
@@ -31,12 +31,7 @@ const Settings = () => {
     }
   }, []);
 
-  const handleLogout = () => {
-  setIsGuestLoggedIn(false);
-  setIsLoggedIn(false);
-  localStorage.removeItem('isGuestLoggedIn');
-  router.push("/");
-};
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -139,26 +134,6 @@ const Settings = () => {
                   />
                 </p>
                 <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
-              </div>
-            </>
-          ) : isGuestLoggedIn ? (
-            <>
-              <h3 className="text-lg text-[#032b41] font-bold mb-2">
-                Your Subscription plan
-              </h3>
-              <div className="mb-2">{subscriptionPlan}</div>
-              <button
-                className="btn max-w-[200px] mb-6 active:scale-95"
-                onClick={() => router.push("/plans")}
-              >
-                Upgrade to Premium
-              </button>
-              <div className="border-b-[1px] border-[#e1e7ea] mb-4"></div>
-              <div className="mb-[32px]">
-                <h3 className="text-lg text-[#032b41] font-bold">Email</h3>
-                <p>guest@example.com</p>
-                <div className="border-b-[1px] border-[#e1e7ea] pb-4"></div>
-                <button className="btn max-w-[200px] mb-6 active:scale-95" onClick={handleLogout}>logout</button>
               </div>
             </>
           ) : isLoggedIn ? (
