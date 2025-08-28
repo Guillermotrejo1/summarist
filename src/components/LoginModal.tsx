@@ -34,14 +34,19 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin, handleGuestLo
   }
 });
 
-  const handleGuestLogin = () => {
+  const handleGuestLogin = async () => {
   setIsLoading(true);
-  setTimeout(() => {
+  try {
+    await signInWithEmailAndPassword(auth, "guest@gmail.com", "guest123");
     if (handleGuestLoginUpdate) {
       handleGuestLoginUpdate(true);
     }
     router.push("/forYou");
-  }, 3000);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setIsLoading(false);
+  }
 };
 
   const register = async () => {
