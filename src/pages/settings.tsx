@@ -37,11 +37,15 @@ const Settings = () => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setIsLoggedIn(!!user); // Set login status based on user state
       if (user) {
+        console.dir(user)
         const userId = user.uid;
         const userRef = doc(db, "customers", userId);
         const docSnap = await getDoc(userRef); // Get user document from Firestore
         if (docSnap.exists()) {
           const userData = docSnap.data();
+          console.dir(userData)
+          console.log("User status: %s", userData.stripeSubscriptionStatus);
+          console.log("User premium: %s", userData.premium);
 
           // Check and update premium status
           if (

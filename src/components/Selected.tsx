@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { FaCirclePlay } from "react-icons/fa6";
-import Link from "next/link";
 import Skeleton from "@mui/material/Skeleton";
+import Image from "next/image";
+import Link from "next/link";
+import { FaCirclePlay } from "react-icons/fa6";
 
 export interface Book {
   id: string;
