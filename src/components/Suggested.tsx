@@ -1,5 +1,5 @@
 import Skeleton from "@mui/material/Skeleton";
-import BookCover from "./bookCover";
+import BookCover from "../components/bookCover";
 
 export interface Book {
   id: string;
